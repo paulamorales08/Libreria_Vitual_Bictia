@@ -18,7 +18,7 @@
             <textarea name="descripcion" id="descripcion" class="form-control"></textarea>
         </div>
         <div class="form-group">
-            <label for="autor">Autor</label>
+            <label for="autor">autor</label>
             <input name='autor' id='autor' placeholder="Ingresa el autor" require class="form-control">
         </div>
         <div class="form-group">
