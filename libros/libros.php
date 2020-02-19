@@ -9,7 +9,7 @@
         public $fechaPublicacion;
         public $precio;
         
-        function __construct(){
+        function __construct(){  
             $db = new Database();
             $this->conn = $db->conectar();
         }
