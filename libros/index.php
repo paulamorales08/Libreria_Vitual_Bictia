@@ -1,3 +1,21 @@
+<?php
+    include('libros.php');
+    $libro = new Libros();
+
+    if ( isset($_POST) && !empty($_POST) ) {
+        $insert = $libro->crearLibro($_POST);
+        if ($insert) {
+            echo "Registro exitoso";
+        }else{
+            echo "Fallo.....";
+            var_dump($insert);  
+        }
+    }
+
+    $ultimoLibro = $libro->getLastLibro();
+    var_dump($ultimoLibro);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,45 +36,50 @@
             <textarea name="descripcion" id="descripcion" class="form-control"></textarea>
         </div>
         <div class="form-group">
-            <label for="autor">autor</label>
-            <input name='autor' id='autor' placeholder="Ingresa el autor" require class="form-control">
-        </div>
-        <div class="form-group">
             <label for="fechaPublicacion">Fecha de Publicacion</label>
-            <input name='fechaPublicacion' id='fechaPublicacion' type="date" placeholder="Ingresar la fecha Publicacion " require class="form-control">
+            <input name='fechaPublicacion' id='fechaPublicacion' type="text" placeholder="Ingresar la fecha Publicacion " require class="form-control">
         </div>
         <div class="form-group">
             <label for="precio">Precio</label>
             <input name='precio' id='precio' type="text" placeholder="Ingresar el precio" require class="form-control">
         </div>
-
-        <button class="btn btn-primary">Enviar</button>
-        <br/>
-        <br>
-        <div>
-            <table class="table">
-                <thead class="thead-dark">
-                    <th scope="col">Libro</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Autor</th>
-                    <th scope="col">Fecha de Publicacion</th>
-                    <th scope="col">Precio</th>
-                </thead>
-
-                <?php
-                    while ($pers = mysqli_fetch_object($todasLasPersonas)) {
-                        echo "<tr>";
-                        echo "<td scope='row'>$pers->nombres</td>";
-                        echo "<td scope='row'>$pers->apellidos</td>";
-                        echo "<td scope='row'>$pers->profesion</td>";
-                        echo "<td scope='row'>$pers->descripcion</td>";
-                        echo "<td scope='row'> <a href='modificar.php?id=$pers->id'>Modificar</a> </td>";
-                        echo "<td scope='row'> <a href='eliminar.php?id=$pers->id'>Eliminar</a> </td>";
-                        echo "</tr>";
-                    }
-                ?>
-            </table>
+        <div class="form-group">
+            <label for="idAutor">idAutor</label>
+            <input name='idAutor' id='idAutor' type="number" placeholder="Ingresar el idAutor" require class="form-control">
         </div>
+        <div class="form-group">
+            <label for="idEditorial">idEditorial</label>
+            <input name='idEditorial' id='idEditorial' type="number" placeholder="Ingresar el idEditorial" require class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="idCategoria">idCategoria</label>
+            <input name='idCategoria' id='idCategoria' type="number" placeholder="Ingresar el idCategoria" require class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="estado">Estado</label>
+            <select name="estado" id="estado" class="form-control">
+                <option value="1">1</option>
+                <option value="0">0</option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary">Registrar Libro</button>
     </form>
+
+
+    <table>
+        <th>
+            Nombre
+        </th>
+        <th>
+            ID
+        </th>
+
+    <tr>
+        <tr><?= $ultimoLibro->nombreLibro ?></tr>
+        <tr><?= $ultimoLibro->idLibro ?></tr>
+    </tr>
+
+    </table>
 </body>
 </html>
