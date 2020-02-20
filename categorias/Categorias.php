@@ -1,23 +1,28 @@
 <?php 
-
+include ('../Conn/Database.php');
 class Categoria {
-    public $id;
-    public $nombre;
+    public $idCategoria;
+    public $nombreCategoria;
     public $descripcion;
-    public $status;
+    public $estado;
+    public $cat;
+    public $conn;
 
     function __construct()
     {
-        
+        $db = new Databse();
+        $this->conn = $db->connectToDatabase();
     }
 
     function crearCategorias($data){
-        $nombre = $data['nombre'];
+        $nombreCategoria = $data['nombreCategoria'];
         $descripcion = $data['descripcion'];
         $estado = $data['estado'];
+      
 
-        $sql = "INSERT INTO Categorias (nombre,descripcion,status) VALUES ('$nombre','$descripcion','$estado')";
+        $sql = "INSERT INTO categorias (nombreCategoria,descripcion,estado) VALUES ('$nombreCategoria','$descripcion','$estado')";
         $respuesta = mysqli_query($this->conn,$sql);
+
         if ($respuesta) {
             return true;
         } else {
@@ -26,22 +31,23 @@ class Categoria {
     }
 
     function obtenerCategorias(){
-        $sql = "SELECT * FROM Categorias";
+        $sql = "SELECT * FROM categorias ORDER BY nombreCategoria";
         return  mysqli_query($this->conn,$sql);
     }
 
-    function obtenerCategoria($id){
-        $sql = "SELECT * FROM Categorias WHERE id=$id";
+    function obtenerCategoria($idCategoria){
+        $sql = "SELECT * FROM categorias WHERE idCategoria=$idCategoria";
         return mysqli_fetch_object(mysqli_query($this->conn, $sql));
     }
 
     function modificarCategoria($data){
-        $id = $data['id'];
-        $nombre = $data['nombre'];
+        $idCategoria = $data['idCategoria'];
+        $nombreCategoria = $data['nombreCategoria'];
         $descripcion = $data['descripcion'];
         $estado = $data['estado'];
 
-        $sql = "UPDATE Categorias SET nombre = '$nombre', descripcion = '$descripcion', estado = '$estado' WHERE id='$id'";
+        $sql = "UPDATE `categorias` SET `nombreCategoria` = '$nombreCategoria', `estado` = '$estado', `descripcion` = '$descripcion' WHERE `categorias`.`idCategoria` = $idCategoria";
+
         $update = mysqli_query($this->conn,$sql);
         if ($update) {
             return true;
@@ -50,13 +56,18 @@ class Categoria {
         }
     }
 
-    function eliminarCategoria($id){
-        $sql = "DELETE FROM Categorias WHERE id=$id";
-        return mysqli_query($this->conn,$sql);
+    function filtroCategorias($consulta){
+        //$sql = "SELECT * FROM categorias WHERE idCategoria = $idCategoria";
+        $sql = "SELECT * FROM categorias WHERE nombreCategoria LIKE '%$consulta%'";
+        return mysqli_query($this->conn, $sql);
     }
 
+    function filtroLibrosCategoria($idCategoria){
+        $sql = "SELECT * FROM libros WHERE idCategoria = $idCategoria";
+        //$sql = "SELECT * FROM categorias WHERE nombreCategoria LIKE '%$consulta%'";
+        return mysqli_query($this->conn, $sql);
+    }
 
 }
-
 
 ?>
