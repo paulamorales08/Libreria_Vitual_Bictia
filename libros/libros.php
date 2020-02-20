@@ -1,6 +1,5 @@
 <?php
-    include('Database.php'); 
-    include('autor.php');
+    include('../Conn/Database.php');
 
     class Libros{
 
@@ -16,8 +15,8 @@
         public $conn;
         
         function __construct(){  
-            $db = new Database();
-            $this->conn = $db->conectar();
+            $db = new Databse();
+            $this->conn = $db->connectToDatabase();
         }
 
         function crearLibro($data){
@@ -43,26 +42,108 @@
             }
         }
 
-        function getLibros($nombreLibro){
+        function getLibros(){
             $sql = "SELECT * FROM Libros";
             return mysqli_query($this->conn, $sql);
         }
 
-        function getLastLibro(){
-            $sql = "SELECT * FROM Libros ORDER BY idLibro DESC";
-            return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+        function getLibro($idLibro){
+            $sql = "SELECT * FROM Libros WHERE idLibro=$idLibro";
+            return mysqli_query($this->conn, $sql);
         }
 
-        /*function updateLibro($data, $idLibro){
+        function updateLibro($data){
             $idLibro = $data['idLibro'];
             $libro = $data['libro'];
             $descripcion = $data['descripcion'];
-            $autor = $data['autor'];
             $fechaPublicacion = $data['fechaPublicacion'];
             $precio = $data['precio'];
+            $estado = $data['estado'];
+            $autor = $data['idAutor'];
+            $editorial = $data['idEditorial'];
+            $categoria = $data['idCategoria'];
+           
 
-            $sql = "UPDATE Libros SET nombreLibro = '$libro', descripcion = '$descripcion', autor = '$autor', fechaPublicacion = '$fechaPublicacion', precio = '$precio' 
+            $sql = "UPDATE Libros SET nombreLibro = '$libro', descripcion = '$descripcion', fechaPublicacion = '$fechaPublicacion', 
+                                      fechaPublicacion = '$fechaPublicacion', precio = '$precio', estado = '$estado', idEditorial = '$editorial',
+                                      idAutor = '$autor', idCategoria = '$categoria'
                     WHERE id = '$idLibro' ";
-        }*/
+        }
+
+        function deleteLibro($idLibro){
+            $sql = "DELETE FROM Personas WHERE id = $idLibro";
+            return mysqli_query($this->conn, $sql);
+        }
+
+    }
+
+    //Editoriales
+
+    class Editoriales{
+        public $idEditorial;
+        public $nombreEditorial;
+        public $conn;
+
+        function __construct(){
+            $db = new Databse();
+            $this->conn = $db->connectToDatabase();
+        }
+
+        function getEditorial($idEditorial){
+            $sql = "SELECT * FROM editoriales WHERE idEditorial=$idEditorial";
+            return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+        }
+
+        function getAllEditoriales(){
+            $sql = "SELECT * FROM editoriales ORDER BY nombreEditorial";
+            return mysqli_query($this->conn, $sql);
+        }
+    }
+
+    //Autores
+
+    class Autores{
+        public $idAutor;
+        public $nombreAutor;
+        public $conn;
+
+        function __construct(){
+            $db = new Databse();
+            $this->conn = $db->connectToDatabase();
+        }
+
+        function getAutor($idAutor){
+            $sql = "SELECT * FROM autores WHERE idAutor=$idAutor";
+            return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+        }
+
+        function getAllAutores(){
+            $sql = "SELECT * FROM autores ORDER BY nombreAutor";
+            return mysqli_query($this->conn, $sql);
+        }
+    }
+
+    // Categorias
+
+    class Categorias{
+        public $idCategoria;
+        public $nombreCategoria;
+        public $estado;
+        public $conn;
+
+        function __construct(){
+            $db = new Databse();
+            $this->conn = $db->connectToDatabase();
+        }
+
+        function getCategoria($idCategoria){
+            $sql = "SELECT * FROM categorias WHERE idCategoria=$idCategoria";
+            return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+        }
+
+        function getAllCategorias(){
+            $sql = "SELECT * FROM categorias ORDER BY nombreCategoria";
+            return mysqli_query($this->conn, $sql);
+        }
     }
 ?>
