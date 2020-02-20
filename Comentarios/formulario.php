@@ -1,3 +1,3 @@
 <?php
-echo "este es el formulario"; 
+echo "este es el formulario 1"; 
 ?>
