@@ -6,7 +6,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Document</title>
 </head>
-<body>
+<header>
 <a href="usuarios/registroUsuario.php" class="btn btn-success"> Crear usuario</a>
+<a href="usuarios/login.php" class="btn btn-success"> Iniciar Sesión</a>
+</header>
+<body>
+
+
 </body>
 </html>

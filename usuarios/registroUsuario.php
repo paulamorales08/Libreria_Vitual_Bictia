@@ -27,7 +27,7 @@ if(isset($_POST) && !empty($_POST)){
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="nomUsuario">Nombre Usuario</label>
-          <input type="text" class="form-control" id="nomUsuario" name="nomUsuario" placeholder="nomUsuario" required max="50">
+          <input type="text" class="form-control" id="nomUsuario" name="nomUsuario" placeholder="Ingresa nombre de usuario" required max="50">
         </div>
         <div class="form-group col-md-6">
 
