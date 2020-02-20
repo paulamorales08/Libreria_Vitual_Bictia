@@ -5,6 +5,7 @@ class Categoria {
     public $nombreCategoria;
     public $descripcion;
     public $estado;
+    public $cat;
     public $conn;
 
     function __construct()
@@ -30,7 +31,7 @@ class Categoria {
     }
 
     function obtenerCategorias(){
-        $sql = "SELECT * FROM categorias";
+        $sql = "SELECT * FROM categorias ORDER BY nombreCategoria";
         return  mysqli_query($this->conn,$sql);
     }
 
@@ -55,6 +56,17 @@ class Categoria {
         }
     }
 
+    function filtroCategorias($consulta){
+        //$sql = "SELECT * FROM categorias WHERE idCategoria = $idCategoria";
+        $sql = "SELECT * FROM categorias WHERE nombreCategoria LIKE '%$consulta%'";
+        return mysqli_query($this->conn, $sql);
+    }
+
+    function filtroLibrosCategoria($idCategoria){
+        $sql = "SELECT * FROM libros WHERE idCategoria = $idCategoria";
+        //$sql = "SELECT * FROM categorias WHERE nombreCategoria LIKE '%$consulta%'";
+        return mysqli_query($this->conn, $sql);
+    }
 
 }
 

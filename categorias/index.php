@@ -26,9 +26,11 @@ $todasCategorias = $categoria->obtenerCategorias();
 </head>
 
 <body>
-    <div class="container w-75 p-3">
-
-        <form method="POST">
+    <div class="container w-75 p-3 shadow p-3 mb-5 bg-white rounded text-dark">
+        <div class="form-group pt-4">
+            <h2 class="text-center font-weight-light">Administrador Categorias</h2>
+        </div>
+        <form method="POST" class="m-3">
             <div class="form-group">
                 <label for="">Nombre Categoria</label>
                 <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria">
@@ -46,34 +48,43 @@ $todasCategorias = $categoria->obtenerCategorias();
                 <label for="">Descripción</label>
                 <textarea class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
             </div>
+            <div class="d-flex flex-row-reverse bd-highlight">
+                <button type="submit" class="btn btn-success m-1 pl-4 pr-4">Agregar</button>
+            </div>
 
-            <button type="submit" class="btn btn-primary">Agregar</button>
         </form>
-        
 
-        <table class="table mt-5">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">CATEGORIA</th>
-                    <th scope="col">ESTADO</th>
-                    <th scope="col">DESCRIPCION</th>
-                    <th scope="col">MODIFICAR</th>
-                </tr>
-            </thead>
-       
-        <?php
-        while ($cate = mysqli_fetch_object($todasCategorias)) {
+        <div class="container">
+            <table class="table mt-4">
+                <thead class="thead-dark text-center">
+                    <tr>
+                        <th scope="col">CATEGORIA</th>
+                        <th scope="col">ESTADO</th>
+                        <th scope="col">DESCRIPCION</th>
+                        <th scope="col">MODIFICAR</th>
+                    </tr>
+                </thead>
 
-            echo "<tbody>";
-            echo "<tr>";    
-            echo "<td> $cate->nombreCategoria </td>";
-            echo "<td> $cate->estado </td>";
-            echo "<td> $cate->descripcion </td>";
-            echo "<td><a href='modificarCat.php?idCategoria=$cate->idCategoria' class='btn btn-primary'>Modificar</a></td> ";
-            echo "</tbody>";
-        }
-        ?>
-         </table>
+                <?php
+                while ($cate = mysqli_fetch_object($todasCategorias)) {
+
+                    echo "<tbody>";
+                    echo "<tr class='text-center'>";
+                    echo "<td> $cate->nombreCategoria </td>";
+                    if($cate->estado == 1){
+                        echo "<td> Activo </td>";
+                    }else{
+                        echo "<td> Inactivo </td>";
+                    }
+                    echo "<td  class='text-justify text-center '> $cate->descripcion </td>";
+                    echo "<td class='align-middle'><a href='modificarCat.php?idCategoria=$cate->idCategoria' class='btn btn-outline-success'>Modificar</a></td> ";
+                    echo "</tbody>";
+                }
+                ?>
+            </table>
+        </div>
+
+
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
