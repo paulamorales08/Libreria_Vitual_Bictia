@@ -1,11 +1,6 @@
 <?php
 
-if ( !defined('ROOT') && !defined('PATH')  ){
-  define("ROOT", 'http://'.$_SERVER['HTTP_HOST'].'/LibreriaVitual');
-  define("PATH", $_SERVER['DOCUMENT_ROOT'].'/LibreriaVitual');
-}
-
-
+include('config.php');
 class Databse{
   public $host = 'localhost';
   public $user = 'root';
@@ -18,6 +13,7 @@ class Databse{
     $this->conn = $this->connectToDatabase();
     return $this->conn;
   }
+  
 
   /**
    * Método que nos permite conectarnos a la DB.
