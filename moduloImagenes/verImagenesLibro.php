@@ -3,7 +3,7 @@ include('claseImagen.php');
 $imagen = new Imagen();
 $libro = new Libro();
 
-$todasLasImagenes = $imagen->obtenerImagenes($idLibro);
+$todasLasImagenes = $imagen->obtenerImagenesActivas($idLibro);
 ?>
 
 <style>
