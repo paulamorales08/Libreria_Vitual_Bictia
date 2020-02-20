@@ -3,10 +3,11 @@ include('Categorias.php');
 
 $categoria = new Categoria();
 
+$categorias = $categoria->obtenerCategorias();
+
 if (isset($_GET) && !empty($_GET)) {
     $consulta = $_GET['consulta'];
     $todasCategorias = $categoria->filtroCategorias($consulta);
-   
 
     while ($catRecorrido = mysqli_fetch_object($todasCategorias)) {
         echo $catRecorrido->nombreCategoria;
@@ -14,15 +15,13 @@ if (isset($_GET) && !empty($_GET)) {
         echo $catRecorrido->descripcion;
         echo "</br> </br>";
         $todosLibros = $categoria->filtroLibrosCategoria($catRecorrido);
-        while($libroRecorrido = mysqli_fetch_object($todosLibros)){
+        while ($libroRecorrido = mysqli_fetch_object($todosLibros)) {
             echo $libroRecorrido->nombreLibro;
         }
-        
     }
 } else {
     echo "No se encontro";
 }
-
 
 ?>
 
@@ -38,7 +37,24 @@ if (isset($_GET) && !empty($_GET)) {
 
 <body>
     <div class="container w-75 p-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Clasificacion
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <?php
+                    while ($recorridoTodasCat = mysqli_fetch_object($categorias)) {
+                        echo "<a class='dropdown-item' href='?idCategoria=$recorridoTodasCat->idCategoria'>$recorridoTodasCat->nombreCategoria</a>";
+                    }
+                    ?>
 
+                </div>
+            </li>
+
+
+    </div>
+    </nav>
 
     </div>
 
