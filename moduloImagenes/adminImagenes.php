@@ -19,8 +19,6 @@
 
     $todasLasImagenes = $imagen->obtenerImagenes($idLibro);
     $datosDelLibro = $libro->obtenerLibro($idLibro);
-    $idAutor = $datosDelLibro->idAutor;
-    $autor = $libro->obtenerAutores($idAutor);
     ?>
 
 <div class="container w-75 p-3 shadow p-3 mb-5 bg-white rounded text-dark">
