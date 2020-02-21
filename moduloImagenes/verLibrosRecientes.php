@@ -11,7 +11,7 @@
             <h2 class="text-center font-weight-light">Administrador de Imágenes</h2>
             <h3 class="text-center font-weight-light texto_verde">Libros Recientes</h3>
         </div>
-
+ 
       <div class="container">
             <table class="table mt-4 tablaImagenes">
                 <thead class="thead-dark text-center">
