@@ -3,6 +3,7 @@ include('Comentarios.php');
 $comentario1 = new Comentario();
 $rol=1;
 $usuarioLogin=3;
+$valoraciontotal=0;
 if (isset($_GET) && !empty($_GET)) {
     $idLibro=$_GET['idLibro'];
     $comentarios = $comentario1->verTodos($idLibro);
@@ -31,10 +32,11 @@ if (isset($_GET) && !empty($_GET)) {
             }
             
             echo "</tr>";
+            $valoraciontotal+=$come->valoracion;
         
         }
 
-
+         echo $valoraciontotal;
         if(empty($usuarioLogin)){
             echo "debe loguearse";
         } else{
