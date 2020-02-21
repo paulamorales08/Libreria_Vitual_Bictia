@@ -1,14 +1,13 @@
 <?php
 include('Comentarios.php');
 $comentario1 = new Comentario();
-$rol=1;
-$usuarioLogin=3;
 $valoraciontotal=0;
+$conteo=0;
 if (isset($_GET) && !empty($_GET)) {
-    $idLibro=$_GET['idLibro'];
-    $comentarios = $comentario1->verTodos($idLibro);
+$idLibro=$_GET['idLibro'];
+$todosLosComentarios = $comentario1-> todosComentariosLibro($idLibro);   
 }
-//$todosLosComentarios = $comentario1->obtenerComentarios();
+
 ?>
 
     <table>
@@ -19,7 +18,7 @@ if (isset($_GET) && !empty($_GET)) {
         <th>Libro</th>
         <th>Usuario</th>
         <?php
-        while ($come = mysqli_fetch_object($comentarios)) {
+        while ($come = mysqli_fetch_object($todosLosComentarios)) {
             echo "<tr>";
             echo "<td>$come->fechaComentario</td>";
             echo "<td>$come->comentario</td>";
@@ -27,21 +26,12 @@ if (isset($_GET) && !empty($_GET)) {
             echo "<td>$come->estado</td>";
             echo "<td>$come->idLibro</td>";
             echo "<td>$come->idUsuario</td>";
-            if($come->idUsuario==$usuarioLogin){
-                echo "<td><a href='modificar.php?idComentario=$come->idComentario'>Modificar</a></td>";
-            }
-            
+            echo "<td><a href='modificar.php?idComentario=$come->idComentario'>Modificar</a></td>";
             echo "</tr>";
             $valoraciontotal+=$come->valoracion;
+            $conteo++;
+        }
+        echo $valoraciontotal/$conteo;
         
-        }
-
-         echo $valoraciontotal;
-        if(empty($usuarioLogin)){
-            echo "debe loguearse";
-        } else{
-            
-            include('formulario.php');
-        }
-               ?>
+        ?>
     </table>
