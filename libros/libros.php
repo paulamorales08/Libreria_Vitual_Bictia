@@ -49,7 +49,7 @@
 
         function getLibro($idLibro){
             $sql = "SELECT * FROM Libros WHERE idLibro=$idLibro";
-            return mysqli_query($this->conn, $sql);
+            return mysqli_fetch_object(mysqli_query($this->conn, $sql));
         }
 
         function updateLibro($data){

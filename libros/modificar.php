@@ -2,20 +2,20 @@
     include_once('libros.php');
     $libro = new Libros();
     $dp = $libro->getLibro($_GET['id']);
-    var_dump($dp);
     
     if ( isset($_POST) && !empty($_POST)) {
         $modificar = $libro->updateLibro($_POST);
         if ($modificar) {
             echo "Modificación exitosa";
+            //header('location:index.php');
         }else{
-            echo "Error!";
+            echo "Error al modificar";
         }
     }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +24,9 @@
     <title>Libreria</title>
 </head>
 <body>
+
+<h1>Modificación de Libro</h1>
+
 <form  method="POST" class="w-100 p-4">
         <div class="form-group">
             <label for="lidibro">idLibro</label>
@@ -46,7 +49,7 @@
         </div>
         <div class="form-group">
             <label for="precio">Precio</label>
-            <input name='precio' id='precio' type="text" placeholder="Ingresar el precio" 
+            <input name='precio' id='precio' type="number" placeholder="Ingresar el precio" 
             require class="form-control" value="<?= $dp->precio ?>">
         </div>
         <div class="form-group">
@@ -58,13 +61,11 @@
         </div>
         <div class="form-group">
             <label for="idEditorial">Editorial</label>
-            <select name="idEditorial" id="idEditorial" class="form-control">
             <input name='precio' id='precio' type="text" placeholder="Ingresar el precio" 
             require class="form-control" value="<?= $dp->idEditorial ?>">      
         </div>
         <div class="form-group">
             <label for="idCategoria">Categoria</label>
-            <select name="idCategoria" id="idCategoria" class="form-control">
             <input name='precio' id='precio' type="text" placeholder="Ingresar el precio" 
             require class="form-control" value="<?= $dp->idCategoria ?>"> 
         </div>
@@ -72,7 +73,7 @@
             <label for="estado">Estado</label>
             <select name="estado" id="estado" class="form-control">
                 <?php
-                    if ($dp->estado === 0) {
+                    if ($dp->estado === '0') {
                         echo "<option value='0'>No Disponible</option>";
                         echo "<option value='1'>Disponible</option>";
                     }else{

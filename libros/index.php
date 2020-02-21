@@ -65,24 +65,24 @@
             <label for="idEditorial">Editorial</label>
             <select name="idEditorial" id="idEditorial" class="form-control">
                 <option value="-"> - </option>
-            <?php
-                $todasLasEditoriales = $editorial->getAllEditoriales();
-                while ($pers = mysqli_fetch_object($todasLasEditoriales)) {
-                    echo "<option value='$pers->idEditorial'>$pers->nombreEditorial</option>";
-                }
-            ?>
+                <?php
+                    $todasLasEditoriales = $editorial->getAllEditoriales();
+                    while ($pers = mysqli_fetch_object($todasLasEditoriales)) {
+                        echo "<option value='$pers->idEditorial'>$pers->nombreEditorial</option>";
+                    }
+                ?>
             </select>       
         </div>
         <div class="form-group">
             <label for="idCategoria">Categoria</label>
             <select name="idCategoria" id="idCategoria" class="form-control">
                 <option value="-"> - </option>
-            <?php
-                $todasLasCategorias = $categoria->getAllCategorias();
-                while ($pers = mysqli_fetch_object($todasLasCategorias)) {
-                    echo "<option value='$pers->idCategoria'>$pers->nombreCategoria</option>";
-                }
-            ?>
+                <?php
+                    $todasLasCategorias = $categoria->getAllCategorias();
+                    while ($pers = mysqli_fetch_object($todasLasCategorias)) {
+                        echo "<option value='$pers->idCategoria'>$pers->nombreCategoria</option>";
+                    }
+                ?>
             </select> 
         </div>
         <div class="form-group">
