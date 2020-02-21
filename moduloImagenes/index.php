@@ -25,7 +25,7 @@
               $idLibro = $_GET['idLibro'];
               include_once('adminImagenes.php');
             } else {
-              include_once('verImagenesRecientes.php');
+              include_once('verLibrosRecientes.php');
             }
         ?>
     </div>

@@ -39,10 +39,17 @@ class Imagen
     function obtenerImagenes($idLibro)
     //Esta función es usada por el administrador
     {
-        $sql = "SELECT * FROM imagenes WHERE idLibro=$idLibro ORDER BY orden";
+        $sql = "SELECT * FROM imagenes WHERE idLibro=$idLibro ORDER BY estado DESC, orden ASC";
         return mysqli_query($this->conn, $sql);
         //return mysqli_fetch_object(mysqli_query($this->conn, $sql));
     }
+
+    function obtenerPrimeraImagen($idLibro)
+    {
+        $sql = "SELECT * FROM imagenes WHERE idLibro=$idLibro ORDER BY estado DESC, orden ASC LIMIT 1";
+        return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+    }
+
     function obtenerImagenesRecientes()
     //Esta función es usada por el administrador y devuelve las 5 imágenes recientes
     {
@@ -126,5 +133,12 @@ class Libro
         $sql = "SELECT * FROM autores WHERE idAutor=$idAutor";
         //echo $sql;
         return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+    }
+    function obtenerLibrosRecientes()
+    //Esta función es usada por el administrador y devuelve los 5 libros recientes
+    {
+        $sql = "SELECT * FROM libros ORDER BY idLibro DESC LIMIT 5";
+        return mysqli_query($this->conn, $sql);
+        //return mysqli_fetch_object(mysqli_query($this->conn, $sql));
     }
 }
