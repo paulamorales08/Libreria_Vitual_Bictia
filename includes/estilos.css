@@ -1,0 +1,30 @@
+/* Estilos de Imágenes */
+.texto_verde{
+    color: green ;
+}
+.tablaImagenes img{
+    border: 1px solid lightgray;
+    padding: 5px;
+}
+.imagen_inactiva img {
+    filter: grayscale(100%);
+}
+.imagen_activa img {
+    filter: grayscale(0%);
+}
+#carouselExampleControls {
+    max-width: 300px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    margin: 5px;
+    padding: 5px;
+}
+.footer{
+    border-top: 1px solid grey;
+    background-color: lightgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: grey;
+}

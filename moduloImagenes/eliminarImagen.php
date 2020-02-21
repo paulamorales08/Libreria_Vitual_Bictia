@@ -63,11 +63,7 @@ include('../Conn/Database.php');
 
     $borrarImagen = $imagen->eliminarImagen($id);
     if ($borrarImagen){
-        echo '<br><div class="container"><div class="alert alert-success" role="alert">Eliminación exitosa.</div>';
-        echo '</div>';
-        echo "<a href='index.php?idLibro=$idLibro' class='btn btn-danger'> Volver </a>";
-        //header('location:../index.php');
-        
+        header("location:index.php?idLibro=$idLibro");
     }
     else{
         echo "Ocurrió un error";
