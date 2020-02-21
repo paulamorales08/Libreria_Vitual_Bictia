@@ -1,5 +1,5 @@
 <?php
-include('claseImagen.php');
+include_once('claseImagen.php');
 $imagen = new Imagen();
 $libro = new Libro();
 
