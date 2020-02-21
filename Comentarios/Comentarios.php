@@ -22,7 +22,7 @@ class Comentario
 
 
     function crearComentario($data)
-    {   
+    {
         echo "Entró en Crear...";
         $fechaComentario = $data['fechaComentario'];
         $comentario = $data['comentario'];
@@ -46,9 +46,37 @@ class Comentario
         return mysqli_query($this->conn, $sql);
     }
 
-    /*function obtenerComentario($idComentario){
-    $sql="SELECT * FROM comentarios WHERE id=$idComentario";
-    return mysqli_fetch_object(mysqli_query($this->conn,$sql));
-}
-*/
+    function obtenerComentario($idComentario)
+    {
+        $sql = "SELECT * FROM comentarios WHERE idComentario=$idComentario";
+        return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+    }
+    function modificarComentario($data){
+        $idComentario = $data['idComentario'];
+        $fechaComentario = $data['fechaComentario'];
+        $comentario = $data['comentario'];
+        $valoracion = $data['valoracion'];
+        $estado = $data['estado'];
+        $idLibro = $data['idLibro'];
+        $idUsuario = $data['idUsuario'];
+        $sql = "UPDATE comentarios SET 
+    fechaComentario='$fechaComentario',comentario='$comentario',
+    valoracion='$valoracion',estado='$estado',idLibro='$idLibro',
+    idUsuario='$idUsuario' WHERE idComentario='$idComentario'";
+        $update = mysqli_query($this->conn, $sql);
+        if ($update) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function eliminarComentario($idComentario){
+        $sql="DELETE FROM comentarios WHERE idComentario=$idComentario";
+        return mysqli_query($this->conn,$sql);
+    }
+    function verTodos($idLibro){
+        $sql = "SELECT * FROM comentarios WHERE idLibro= $idLibro";
+        return mysqli_query($this->conn, $sql);
+    }
 }

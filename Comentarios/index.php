@@ -25,6 +25,7 @@ $todosLosComentarios = $comentario1->obtenerComentarios();
     <label for="idUsuario">Usuario</label>
     <input name="idUsuario" id="idUsuario" placeholder="Ingresar Usuario" type="text" require></br>
     <button>Enviar</button>
+
     <table>
         <th>Fecha</th>
         <th>Comentario</th>
@@ -41,6 +42,10 @@ $todosLosComentarios = $comentario1->obtenerComentarios();
             echo "<td>$come->estado</td>";
             echo "<td>$come->idLibro</td>";
             echo "<td>$come->idUsuario</td>";
+            echo "<td><a href='modificar.php?idComentario=$come->idComentario'>Modificar</a></td>";
+            echo "<td><a href='eliminar.php?idComentario=$come->idComentario'>Eliminar</a></td>";
+            echo "</tr>";
+        
         }
 
         ?>

@@ -1,90 +1,113 @@
-<div class="container">
-    <br>
+<!DOCTYPE html>
+<html lang="es">
 
-    <div>
-      <h1>Modificar datos de la Imagen</h1>
-    </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle de Imágenes</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="../includes/estilos.css">
+  <link rel="stylesheet" href="../includes/fontawesome/css/all.css">
+</head>
+
+<body>
 
     <?php
-    //echo "Bienvenidos al módulo de Imágenes <br>";
+      include_once('../includes/header.php');
+    ?>
+
+
+    <?php
     include('claseImagen.php');
     $imagen = new Imagen();
     $libro = new Libro();
 
     if (isset($_GET) && !empty($_GET)) {
         $id = $_GET['id'];
+        $idLibro = $_GET['idLibro'];
         //echo $id;
     } else {
         echo "No hay variable válida";
     }
 
     $datosDeLaImagen = $imagen->obtenerImagen($id);
-    //echo $datosDeLaImagen->idLibro;
-    //echo $datosDeLaImagen->estado;
-
 
     if( isset($_POST) && !empty($_POST) ){
       $modificar = $imagen->modificarImagen($_POST);
       if ($modificar){
           echo '<br><div class="container"><div class="alert alert-success" role="alert">Actualización exitosa.</div></div>';
-          $datosDeLaImagen = $imagen->obtenerImagen($id);
-          //echo "<br> Se actualizó";
-          //header('location:../index.php');
-          
+          $datosDeLaImagen = $imagen->obtenerImagen($id);       
+            
         }
         else{
           echo "Ocurrió un error";
         }
-  
   }
+?>
 
-    ?>
 
-    <form method="POST" enctype="multipart/form-data">
-      <div class="row">
-        <div class="col-sm-3">
-            <img src='imagenesLibros/<?= $datosDeLaImagen->urlImagen ?>' alt="<?= $datosDeLaImagen->nombreImagen?>" width="200px">
-        </div>
-        <div class="col-sm-2">
+
+  <div class="container w-75 p-3 shadow p-3 mb-5 bg-white rounded text-dark">
+          <div class="form-group pt-4">
+              <h2 class="text-center font-weight-light">Modificar Imagen</h2>
+          </div>
+
+      <form method="POST" enctype="multipart/form-data">
+
+      <div class="form-group w-100">
+        <img src='imagenesLibros/<?= $datosDeLaImagen->urlImagen ?>' alt="<?= $datosDeLaImagen->nombreImagen?>" width="200px">
+      </div>
+      <div class="form-row">
+        <div class="col-4">
             <label for="nombreImagen">Nombre de la Imagen</label>
-          <input type="text" name="nombreImagen" class="form-control" placeholder="Nombre de la Imagen (ALT)" required value="<?= $datosDeLaImagen->nombreImagen?>">
+            <input type="text" name="nombreImagen" class="form-control" placeholder="Nombre de la Imagen (ALT)" required value="<?= $datosDeLaImagen->nombreImagen?>">
         </div>
-        <div class="col-sm-2">
-            <label for="idImagen">Imagen</label><br>
-          <input type="text" name="idImagen" class="form-control" placeholder="id Libro" readonly value="<?= $datosDeLaImagen->idImagen?>">
+        <div class="col-4">
+            <label for="text">Estado</label>
+            <select name="estado" id="estado" class="form-control">
+
+            <?php  
+              if($datosDeLaImagen->estado == 1){
+                echo "<option value='1'>Activo *</option>";
+                echo "<option value='0'>Inactivo</option>";
+              }
+              else{
+                echo "<option value='0'>Inactivo *</option>";
+                echo "<option value='1'>Activo</option>";
+              }
+            ?>
+            </select>
         </div>
-        <div class="col-sm-1">
-            <label for="idLibro">ID Libro</label>
-          <input type="text" name="idLibro" class="form-control" placeholder="idLibro" readonly value="<?= $datosDeLaImagen->idLibro?>">
-        </div>
-        <div class="col-sm-1">
+        <div class="col-4">
         <label for="text">Orden</label>
           <input type="text" name="orden" class="form-control" placeholder="Orden" value="<?= $datosDeLaImagen->orden?>">
         </div>
-        <div class="col-sm-2">
-        <label for="text">Estado</label>
-          <select name="estado" id="estado" class="form-control">
-
-          <?php  
-            if($datosDeLaImagen->estado == 1){
-              echo "<option value='1'>Activo *</option>";
-              echo "<option value='0'>Inactivo</option>";
-            }
-            else{
-              echo "<option value='0'>Inactivo *</option>";
-              echo "<option value='1'>Activo</option>";
-            }
-          ?>
-          </select>
-        </div>
-        <br>
-        <div class="col-sm-6">
-            <button class="btn btn-success">Modificar</button>  
-            <a href='index.php?idLibro=<?= $datosDeLaImagen->idLibro?>' class="btn btn-danger">Volver </a>
-        </div>
       </div>
-      
+
+      <div class="form-row">
+        <div class="col-4">
+        <label for="idImagen">Imagen</label><br>
+          <input type="text" name="idImagen" class="form-control" placeholder="id Libro" readonly value="<?= $datosDeLaImagen->idImagen?>">
+        </div>
+        <div class="col-4">
+        <label for="idLibro">ID Libro</label>
+          <input type="text" name="idLibro" class="form-control" placeholder="idLibro" readonly value="<?= $datosDeLaImagen->idLibro?>">
+        </div>
+        <div class="col-4">
+            <br>
+            <button class="btn btn-success">Modificar</button>  
+            <a href='index.php?idLibro=<?= $datosDeLaImagen->idLibro?>' class="btn btn-outline-secondary">Volver </a>
+        </div>
+      </div>      
     </form>
     <br><br>
 
   </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,37 +1,38 @@
-<?php
-include('claseImagen.php');
-$imagen = new Imagen();
-$libro = new Libro();
 
-$todasLasImagenes = $imagen->obtenerImagenesActivas($idLibro);
+<?php
+include('../Conn/Database.php');
+?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="../includes/estilos.css">
+  <link rel="stylesheet" href="../includes/fontawesome/css/all.css">
+  <link rel="shortcut icon" href="../includes/favicon/favicon.ico" />
+</head>
+<?php
+  //include_once('../footer.php');
+  include_once('../includes/header.php');
 ?>
 
-<style>
-    #imagenesDelLibro {
-        max-width: 300px;
-        border: 1px solid lightgray;
-        border-radius: 3px;
-        margin: 5px;
-        padding: 5px;
-    }
-</style>
-
-<div id="imagenesDelLibro" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-
-        <?php
-        $conteo = 0;
-        while ($imagenLibro = mysqli_fetch_object($todasLasImagenes)) {
-            if ($conteo == 0) {
-                echo "<div class='carousel-item active' data-interval='1000'>";
-                echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$imagenLibro->urlImagen' class='d-block w-100' alt='$imagenLibro->nombreImagen' width='300px'/></div>";
-            } else {
-                echo "<div class='carousel-item' data-interval='1000'>";
-                echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$imagenLibro->urlImagen' class='d-block w-100' alt='$imagenLibro->nombreImagen' width='300px'/></div>";
-            }
-            $conteo++;
-        }
-        ?>
-
-    </div>
+<div class="container-fluid">
+<?php 
+      if (isset($_GET) && !empty($_GET)) {
+        $idLibro = $_GET['idLibro'];
+        include_once('listadoImagenesLibro.php');
+      } else {
+          echo "<br><br><div class='container'>";
+          echo '<div class="alert alert-warning" role="alert">No se encontró la varible " <kbd>?idLibro=</kbd>.</div>';
+          echo '</div>';
+      }
+  ?>
 </div>
+
+
+<?php
+  include_once('../includes/footer.php');
+?>
+</body>
+
+</html>

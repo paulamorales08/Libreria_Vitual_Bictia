@@ -39,7 +39,21 @@ class Imagen
     function obtenerImagenes($idLibro)
     //Esta función es usada por el administrador
     {
-        $sql = "SELECT * FROM imagenes WHERE idLibro=$idLibro ORDER BY orden";
+        $sql = "SELECT * FROM imagenes WHERE idLibro=$idLibro ORDER BY estado DESC, orden ASC";
+        return mysqli_query($this->conn, $sql);
+        //return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+    }
+
+    function obtenerPrimeraImagen($idLibro)
+    {
+        $sql = "SELECT * FROM imagenes WHERE idLibro=$idLibro ORDER BY estado DESC, orden ASC LIMIT 1";
+        return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+    }
+
+    function obtenerImagenesRecientes()
+    //Esta función es usada por el administrador y devuelve las 5 imágenes recientes
+    {
+        $sql = "SELECT * FROM imagenes ORDER BY idImagen DESC LIMIT 5";
         return mysqli_query($this->conn, $sql);
         //return mysqli_fetch_object(mysqli_query($this->conn, $sql));
     }
@@ -77,9 +91,9 @@ class Imagen
     {
         //$sql = "UPDATE imagenes SET estado=0, orden=100 WHERE idImagen=$id ";
         $sql = "DELETE FROM imagenes WHERE idImagen=$id ";
-        $update = mysqli_query($this->conn, $sql);
+        $eliminar = mysqli_query($this->conn, $sql);
 
-        if ($update) {
+        if ($eliminar) {
             return true;
         } else {
             return false;
@@ -119,5 +133,12 @@ class Libro
         $sql = "SELECT * FROM autores WHERE idAutor=$idAutor";
         //echo $sql;
         return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+    }
+    function obtenerLibrosRecientes()
+    //Esta función es usada por el administrador y devuelve los 5 libros recientes
+    {
+        $sql = "SELECT * FROM libros ORDER BY idLibro DESC LIMIT 5";
+        return mysqli_query($this->conn, $sql);
+        //return mysqli_fetch_object(mysqli_query($this->conn, $sql));
     }
 }
