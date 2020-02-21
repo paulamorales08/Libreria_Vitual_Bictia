@@ -1,0 +1,127 @@
+/* Estilos de Imágenes */
+.texto_verde{
+    color: green ;
+}
+.tablaImagenes img{
+    border: 1px solid lightgray;
+    padding: 5px;
+}
+.imagen_inactiva img {
+    filter: grayscale(100%);
+}
+.imagen_activa img {
+    filter: grayscale(0%);
+}
+#carouselExampleControls {
+    max-width: 400px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    margin: 5px;
+    padding: 5px;
+}
+.footer{
+    border-top: 1px solid grey;
+    background-color: lightgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: grey;
+}
+.contenedor{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin: 10px 20px;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+}
+.contenedor .imagenLibro{
+    background-color: white;
+    border-radius: 5px;
+}
+.contenedor .datosLibro{
+    padding: 20px;
+    max-width: 600px;
+}
+.contenedor .datosLibro .nombreLibro{
+    font-size: 2em;
+    padding: 0 10px;
+    color: red;
+}
+.contenedor .datosLibro .nombreAutor{
+    font-size: .9em;
+    color: grey;
+    padding: 0 10px;
+}
+.contenedor .datosLibro .publicacion{
+    padding: 0 10px;
+}
+.contenedor .datosLibro .descripcion{
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: .8em;
+    text-align: justify;
+}
+.contenedor .datosLibro .nombreLibro{
+    font-size: 1.5em;
+}
+.contenedor .datosLibro .valoracion{
+    font-size: 2em;
+    color: red;
+    text-align: right;
+}
+.contenedor .datosLibro .precio{
+    font-size: 2em;
+    color: red;
+    text-align: right;
+}
+.comentarios{
+    background-color: rgba(0, 0, 0, 0.03);
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+}
+.comentarios .titulo h2{
+    font-size: 1.3em;
+    padding: 5px 10px;
+    color: grey;
+}
+.comentarios .fechaComentario{
+    font-size: .9em;
+    padding: 5px 0;
+    color: grey;
+}
+.comentarios .card{
+    margin: 5px 0;
+}
+.nuevoComentario{
+    background-color: rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+}
+.nuevoComentario .titulo h2{
+    font-size: 1.3em;
+    padding: 5px 10px;
+    color: grey;
+}
+.nuevoComentario .formulario{
+    margin: 5px 10px;
+}
+.nuevoComentario .formulario textarea{
+    resize: none;
+}
