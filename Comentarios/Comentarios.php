@@ -80,5 +80,9 @@ class Comentario
         $sql = "SELECT * FROM comentarios WHERE idLibro= $idLibro  AND  estado=1";
         return mysqli_query($this->conn, $sql);
     }
+    function obtenerValoracionTotal($idLibro){
+        $sql = "SELECT AVG(valoracion) AS total FROM comentarios WHERE idLibro= $idLibro  AND estado=1";
+        return mysqli_query($this->conn, $sql);
 
+    }
 }
