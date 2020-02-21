@@ -24,6 +24,7 @@ $todosLosComentarios = $comentario1->obtenerComentarios();
          <option value="4">4</option>
          <option value="5">5</option>
      </select>
+     <br>
     <label for="estado">Estado</label>
     <input name="estado" id="estado" placeholder="Ingresar estado" type="text" require></br>
     <label for="idLibro">Libro</label>

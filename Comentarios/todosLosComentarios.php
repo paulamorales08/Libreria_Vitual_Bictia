@@ -3,6 +3,7 @@ include('Comentarios.php');
 $comentario1 = new Comentario();
 $valoraciontotal=0;
 $conteo=0;
+$promedioValoracion=0;
 if (isset($_GET) && !empty($_GET)) {
 $idLibro=$_GET['idLibro'];
 $todosLosComentarios = $comentario1-> todosComentariosLibro($idLibro);   
@@ -31,7 +32,9 @@ $todosLosComentarios = $comentario1-> todosComentariosLibro($idLibro);
             $valoraciontotal+=$come->valoracion;
             $conteo++;
         }
-        echo $valoraciontotal/$conteo;
-        
+        $promedioValoracion= $valoraciontotal/$conteo;
+        echo round($promedioValoracion);
+       
         ?>
+         <img border="0" src="1.jpg" width="30" height="30" onClick="history.back()">
     </table>

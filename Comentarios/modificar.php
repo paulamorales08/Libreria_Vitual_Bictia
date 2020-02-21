@@ -38,4 +38,5 @@ if(isset($_POST)&&!empty($_POST)){
     <input name="idUsuario" id="idUsuario" placeholder="Ingresar Usuario" type="text" require  value="<?= $dc->idUsuario?>"></br>
     <input type="hidden" name="idComentario" value="<?=$dc->idComentario?>"/>
     <button>Enviar</button>
+    <img border="0" src="1.jpg" width="30" height="30" onClick="history.back()">
 </form>
