@@ -20,8 +20,15 @@ if(isset($_POST)&&!empty($_POST)){
     <label for="comentario">Comentario</label>
     <textarea name="comentario" id="comentario"><?= $dc->comentario?></textarea></br>
     <label for="valoracion">Valoracion</label>
-    <input name="valoracion" id="valoracion" placeholder="Ingresar valoracion" type="text" require
-    value="<?= $dc->valoracion?>"></br>
+    <select name="valoracion" id="valoracion">
+      <option value="<?= $dc->valoracion?>"><?= $dc->valoracion?></option>    
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+   </br>
     <label for="estado">Estado</label>
     <input name="estado" id="estado" placeholder="Ingresar estado" type="text" require
     value="<?= $dc->estado?>"></br>
@@ -31,4 +38,5 @@ if(isset($_POST)&&!empty($_POST)){
     <input name="idUsuario" id="idUsuario" placeholder="Ingresar Usuario" type="text" require  value="<?= $dc->idUsuario?>"></br>
     <input type="hidden" name="idComentario" value="<?=$dc->idComentario?>"/>
     <button>Enviar</button>
+    <img border="0" src="1.jpg" width="30" height="30" onClick="history.back()">
 </form>

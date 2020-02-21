@@ -75,8 +75,10 @@ class Comentario
         $sql="DELETE FROM comentarios WHERE idComentario=$idComentario";
         return mysqli_query($this->conn,$sql);
     }
-    function verTodos($idLibro){
-        $sql = "SELECT * FROM comentarios WHERE idLibro= $idLibro";
+    
+    function todosComentariosLibro($idLibro){
+        $sql = "SELECT * FROM comentarios WHERE idLibro= $idLibro  AND  estado=1";
         return mysqli_query($this->conn, $sql);
     }
+
 }
