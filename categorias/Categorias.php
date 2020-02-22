@@ -1,5 +1,5 @@
 <?php 
-include ('../Conn/Database.php');
+include_once ('../Conn/Database.php');
 class Categoria {
     public $idCategoria;
     public $nombreCategoria;
@@ -67,7 +67,6 @@ class Categoria {
         //$sql = "SELECT * FROM categorias WHERE nombreCategoria LIKE '%$consulta%'";
         return mysqli_query($this->conn, $sql);
     }
-
 }
 
 ?>
