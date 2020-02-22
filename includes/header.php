@@ -47,6 +47,7 @@ if (isset($_GET) && !empty($_GET)) {
           while ($recorridoTodasCat = mysqli_fetch_object($categorias)) {
             echo "<a class='dropdown-item' href='../categorias/pruebaindex.php?idCategoria=$recorridoTodasCat->idCategoria'>$recorridoTodasCat->nombreCategoria</a>";
           }
+          
           ?>
         </div>
       </li>

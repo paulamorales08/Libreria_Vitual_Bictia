@@ -13,6 +13,7 @@ if (isset($_GET) && !empty($_GET)) {
 }
 $nombreCat = $categoria->obtenerCategoria($consultaLibro);
 
+
 ?>
 
 <head>
@@ -27,16 +28,32 @@ $nombreCat = $categoria->obtenerCategoria($consultaLibro);
     <div class="container text-center p-4 shadow p-3 mb-5 bg-white rounded">
 
         <?php
-           echo" <h3 class='font-weight-light pb-2'>Sección: <span class='badge badge-dark'>$nombreCat->nombreCategoria</span></h3>";
+        echo " <h3 class='font-weight-light pb-2'>Sección: <span class='badge badge-dark'>$nombreCat->nombreCategoria</span></h3>";
         ?>
 
         <div class="d-flex flex-row bd-highlight mb-3 d-flex justify-content-center d-flex flex-wrap">
             <?php
+
             while ($libroRecorrido = mysqli_fetch_object($todosLibros)) {
+
                 echo "<div class='p-2 bd-highlight'>";
                 echo "<div class='card text-center shadow-sm p-3 mb-5 bg-white rounded' style='width: 18rem;'>";
-                echo " <img src='https://images-na.ssl-images-amazon.com/images/I/41Q6MgM%2BQ3L.jpg' class='card-img-top' alt='Imagen-libro'>
-            <div class='card-body'>";
+
+                $idLibro = $libroRecorrido->idLibro;
+               
+           
+                $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
+                  var_dump($primeraImagenLibro);  
+                  if($primeraImagenLibro==null){
+                    echo "No hay imagen";   
+                  }
+                  else{
+                      echo $primeraImagenLibro->$urlImagen;
+                      
+                   //echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' alt='$primeraImagenLibro->nombreImagen'>";
+                  }
+        
+                echo "<div class='card-body'>";
                 echo "<h5 class='card-title'>$libroRecorrido->nombreLibro</h5>";
                 echo "<p class='card-text text-justify'>$libroRecorrido->descripcion</p>";
                 echo "</div>";
@@ -46,13 +63,11 @@ $nombreCat = $categoria->obtenerCategoria($consultaLibro);
                 echo "<li class='list-group-item'>Estado: $libroRecorrido->estado</li>";
                 echo "<li class='list-group-item'>idAutor: $libroRecorrido->idAutor</li>";
                 echo "<li class='list-group-item'>idEditorial: $libroRecorrido->idEditorial</li>";
-
                 echo " </ul>
                         </div>";
                 echo "</br>";
                 echo "</div>";
 
-                $libroRecorrido->idLibro;
                 //$primeraImagenLibro= $imagen->obtenerPrimeraImagen($libroRecorrido->idLibro);
                 //echo "<td> <img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block w-100' alt='$primeraImagenLibro->nombreImagen' width='300px'/></td>";
             }
