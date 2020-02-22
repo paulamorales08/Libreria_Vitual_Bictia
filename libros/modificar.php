@@ -2,6 +2,9 @@
     include_once('libros.php');
     include_once('../categorias/Categorias.php');
     $libro = new Libros();
+    $autor = new Autores();
+    $editorial = new Editoriales();
+    $categoria = new Categorias();
     $dp = $libro->getLibro($_GET['id']);
     
     if ( isset($_POST) && !empty($_POST)) {
@@ -53,28 +56,58 @@
             <input name='precio' id='precio' type="number" placeholder="Ingresar el precio" 
             require class="form-control" value="<?= $dp->precio ?>">
         </div>
+        <?php
+            $idAutr = $dp->idAutor;
+            $datosAutor = $autor->getNombreAutor($idAutr);
+        ?>
         <div class="form-group">
             <label for="idAutor">Autor</label>
-            <input name='idAutor' id='idAutor' type="text" placeholder="Ingresar el idAutor" 
-            require class="form-control" value="<?= $dp->idAutor ?>">
+            <select name="idAutor" id="idAutor" class="form-control">
+                <option value="<?= $datosAutor->idAutor ?>">Actual - <?= $datosAutor->nombreAutor ?></option>
+                <option value="">  -  </option>
+                <?php
+                    $todosLosAutores = $autor->getAllAutores();
+                    while ($per = mysqli_fetch_object($todosLosAutores)) {
+                        echo "<option value='$per->idAutor'>$per->nombreAutor</option>";
+                    }
+                ?>
+            </select>
         </div>
         <div>
         </div>
+        <?php
+            $idEdit = $dp->idEditorial;
+            $datosEditorial = $editorial->getNombreEditorial($idEdit);
+        ?>
         <div class="form-group">
             <label for="idEditorial">Editorial</label>
-            <input name='idEditorial' id='idEditorial' type="text" placeholder="Ingresar el idEditorial" 
-            require class="form-control" value="<?= $dp->idEditorial ?>">      
+            <select name="idEditorial" id="idEditorial" class="form-control">
+                <option value="<?= $datosEditorial->idEditorial ?>">Actual - <?= $datosEditorial->nombreEditorial ?></option>
+                <option value="">  -  </option>
+                <?php
+                    $todasLasEditoriales = $editorial->getAllEditoriales();
+                    while ($per = mysqli_fetch_object($todasLasEditoriales)) {
+                        echo "<option value='$per->idEditorial'>$per->nombreEditorial</option>";
+                    }
+                ?>
+            </select>
         </div>
+        <?php
+            $idCatg = $dp->idCategoria;
+            $datosCategoria = $categoria->getNombreCategoria($idCatg);
+        ?>
         <div class="form-group">
             <label for="idCategoria">Categoria</label>
-            <input name='idCategoria' id='idCategoria' type="text" placeholder="Ingresar el idCategoria" 
-            require class="form-control" value="
-            <?= 
-                include_once('../categorias/Categorias.php');
-                $categoria = new Categoria();
-                $cat = $categoria->obtenerCategoria($dp->idLibro);
-                var_dump($dp->idLibro);
-            ?>"> 
+            <select name="idCategoria" id="idCategoria" class="form-control">
+                <option value="<?= $datosCategoria->idCategoria ?>">Actual - <?= $datosCategoria->nombreCategoria ?></option>
+                <option value="">  -  </option>
+                <?php
+                    $todasLasCategorias = $categoria->getAllCategorias();
+                    while ($per = mysqli_fetch_object($todasLasCategorias)) {
+                        echo "<option value='$per->idCategoria'>$per->nombreCategoria</option>";
+                    }
+                ?>
+            </select> 
         </div>
         <div class="form-group">
             <label for="estado">Estado</label>

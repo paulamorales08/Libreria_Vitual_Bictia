@@ -102,6 +102,11 @@
             $sql = "SELECT * FROM editoriales ORDER BY nombreEditorial";
             return mysqli_query($this->conn, $sql);
         }
+
+        function getNombreEditorial($idEditorial){
+            $sql = "SELECT * FROM editoriales WHERE idEditorial = $idEditorial";
+            return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+        }
     }
 
     //Autores
@@ -124,6 +129,38 @@
         function getAllAutores(){
             $sql = "SELECT * FROM autores ORDER BY nombreAutor";
             return mysqli_query($this->conn, $sql);
+        }
+
+        function getNombreAutor($idAutor){
+            $sql = "SELECT * FROM autores WHERE idAutor = $idAutor";
+            return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+        }
+    }
+
+    //Categorias
+
+    class Categorias{
+        public $idCategoria;
+        public $nombreCategoria;
+        public $conn;
+
+        function __construct(){
+            $db = new Databse();
+            $this->conn = $db->connectToDatabase();
+        }
+
+        function getCategoria($idCategoria){
+            $sql = "SELECT * FROM categorias WHERE idCategoria = $idCategoria";
+            return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+        }
+
+        function getAllCategorias(){
+            $sql = "SELECT * FROM categorias ORDER BY nombreCategoria";
+            return mysqli_query($this->conn, $sql);
+        }
+        function getNombreCategoria($idCategoria){
+            $sql = "SELECT * FROM categorias WHERE idCategoria = $idCategoria";
+            return mysqli_fetch_object(mysqli_query($this->conn, $sql));
         }
     }
 ?>
