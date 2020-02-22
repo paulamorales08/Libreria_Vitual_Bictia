@@ -41,15 +41,16 @@ $nombreCat = $categoria->obtenerCategoria($consultaLibro);
 
                 $idLibro = $libroRecorrido->idLibro;
                
-           
                 $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
-                  var_dump($primeraImagenLibro);  
+                   
                   if($primeraImagenLibro==null){
                     echo "No hay imagen";   
+                    //var_dump($primeraImagenLibro);
+                    //var_dump($idLibro);
                   }
                   else{
                      // echo $primeraImagenLibro->$urlImagen;
-                      echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block' alt='$primeraImagenLibro->nombreImagen' width='100px'/>";
+                      echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='card-img-top' alt='$primeraImagenLibro->nombreImagen'/>";
                    //echo "<img src='$todaImagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' alt='$primeraImagenLibro->nombreImagen'>";
                   }
         
