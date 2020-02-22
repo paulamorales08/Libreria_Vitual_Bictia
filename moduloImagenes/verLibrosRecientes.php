@@ -16,9 +16,9 @@
             <table class="table mt-4 tablaImagenes">
                 <thead class="thead-dark text-center">
                     <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Imagen</th>
-                        <th scope="col">Descripción</th>
+                        <th scope="col">Libro</th>
+                        <th scope="col">Url</th>
+                        <th scope="col">Imágenes</th>
                         <th scope="col">Modificar</th>
                         <th scope="col">Imágenes</th>
                     </tr>
@@ -29,23 +29,22 @@
           echo "<tbody>";
           echo "<tr class='text-center'>";
           echo "<td> $recorridoLibro->nombreLibro </td>";
-            //Consulta a la tabla de Imagenes
+          //Consulta a la tabla de Imagenes
               $idLibro = $recorridoLibro->idLibro;
-              //echo"<td> $recorridoLibro->idLibro </td>";
-              echo"<td>";
               $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
-                var_dump($primeraImagenLibro);  
+                //var_dump($primeraImagenLibro);  
+
+                //Verificamos si la consulta obtuvo resultados.
                 if($primeraImagenLibro==null){
-                  echo "No hay imagen";
+                  //Si la consulta no trae registros publicamos una imagen genérica.
+                  echo "<td> <img src='$imagen->root/moduloImagenes/imagenesLibros/imagenNoEncontrada.png' class='d-block' alt='Imagen no encontrada' width='100px'/></td>";
+                  echo "<td> Sin imagen</td>";
                 }
                 else{
+                  echo "<td> <img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block' alt='$primeraImagenLibro->nombreImagen' width='100px'/></td>";
                   echo "<td> $primeraImagenLibro->urlImagen</td>";
-                  echo "<td> <img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block w-100' alt='$primeraImagenLibro->nombreImagen' width='300px'/></td>";
                 }
-              echo "</td>";
-
-
-          echo "<td class='text-justify'> $recorridoLibro->descripcion </td>";
+          //echo "<td class='text-justify'> $recorridoLibro->descripcion </td>";
           echo "<td> <a href='modificarLibro.php?id=$recorridoLibro->idLibro' class='btn btn-outline-success'>Modificar</a></td>" ;
           echo "<td> <a href='?idLibro=$recorridoLibro->idLibro' class='btn btn-outline-success'>Imágenes</a></td>" ;
 

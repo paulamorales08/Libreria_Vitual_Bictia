@@ -21,13 +21,14 @@
 
 
   <?php
-      include('claseImagen.php');
+      include('../moduloImagenes/claseImagen.php');
       $imagen = new Imagen();
       $libro = new Libro();
 
       if (isset($_GET) && !empty($_GET)) {
           $idLibro = $_GET['idLibro'];
           include('contenidoLibro.php');
+          include('../Comentarios/todosLosComentarios.php');
       } else {
           echo "No se encontró el libro";
       }
