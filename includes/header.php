@@ -1,4 +1,5 @@
 <?php
+    session_start();
     echo "Este es el encabezado <br>";
 ?>
 

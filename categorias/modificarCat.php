@@ -12,7 +12,7 @@ if (isset($_POST) && !empty($_POST)) {
         echo "Error al modificar";
     }
 }
-?>
+?> 
 
 <head>
     <meta charset="UTF-8">
