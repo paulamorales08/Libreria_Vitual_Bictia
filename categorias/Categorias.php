@@ -1,5 +1,6 @@
 <?php 
 include_once ('../Conn/Database.php');
+
 class Categoria {
     public $idCategoria;
     public $nombreCategoria;
