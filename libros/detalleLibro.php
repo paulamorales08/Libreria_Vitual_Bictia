@@ -27,7 +27,8 @@
 
       if (isset($_GET) && !empty($_GET)) {
           $idLibro = $_GET['idLibro'];
-          include('../moduloImagenes/contenidoLibro.php');
+          include('contenidoLibro.php');
+          include('../Comentarios/todosLosComentarios.php');
       } else {
           echo "No se encontró el libro";
       }
