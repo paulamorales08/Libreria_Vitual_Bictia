@@ -1,5 +1,26 @@
 <?php
-    include('claseImagen.php');
+    include_once('Conn/Database.php');
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="includes/estilos.css?ver19">
+    <link rel="stylesheet" href="includes/fontawesome/css/all.css">
+    <link rel="shortcut icon" href="includes/favicon/favicon.ico" />
+    <title>Principal Temporal</title>
+</head>
+
+
+<body>
+    <?php
+      include_once('includes/header.php');
+    ?>
+
+    <?php
+    include('moduloImagenes/claseImagen.php');
     $imagen = new Imagen();
     $libro = new Libro();
     $todasLasImagenes = $imagen->obtenerImagenesRecientes();
@@ -8,7 +29,6 @@
 
 <div class="container w-75 p-3 shadow p-3 mb-5 bg-white rounded text-dark">
         <div class="form-group pt-4">
-            <h2 class="text-center font-weight-light">Administrador de Imágenes</h2>
             <h3 class="text-center font-weight-light texto_verde">Ver Libros Recientes</h3>
         </div>
  
@@ -17,9 +37,8 @@
                 <thead class="thead-dark text-center">
                     <tr>
                         <th scope="col">Libro</th>
-                        <th scope="col">Url</th>
                         <th scope="col">Imágenes</th>
-                        <th scope="col">Modificar</th>
+                        <th scope="col">Descripcion</th>
                         <th scope="col">Imágenes</th>
                     </tr>
                 </thead>
@@ -38,15 +57,15 @@
                 if($primeraImagenLibro==null){
                   //Si la consulta no trae registros publicamos una imagen genérica.
                   echo "<td> <img src='$imagen->root/moduloImagenes/imagenesLibros/imagenNoEncontrada.png' class='d-block' alt='Imagen no encontrada' width='100px'/></td>";
-                  echo "<td> Sin imagen</td>";
+                  //echo "<td> Sin imagen</td>";
                 }
                 else{
                   echo "<td> <img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block' alt='$primeraImagenLibro->nombreImagen' width='100px'/></td>";
-                  echo "<td> $primeraImagenLibro->urlImagen</td>";
+                  //echo "<td> $primeraImagenLibro->urlImagen</td>";
                 }
           //echo "<td class='text-justify'> $recorridoLibro->descripcion </td>";
-          echo "<td> <a href='modificarLibro.php?id=$recorridoLibro->idLibro' class='btn btn-outline-success'>Modificar</a></td>" ;
-          echo "<td> <a href='?idLibro=$recorridoLibro->idLibro' class='btn btn-outline-success'>Imágenes</a></td>" ;
+          echo "<td class='text-justify' style='font-size:.8em'; width='400px'> $recorridoLibro->descripcion </td>" ;
+          echo "<td> <a href='libros/detalleLibro.php?idLibro=$recorridoLibro->idLibro' class='btn-warning'>Detalle</a></td>" ;
 
 
 
@@ -54,6 +73,12 @@
           echo "</tbody>";
         } ?>
       </table>
+</div>
+</div>
 
+    <?php
+      include_once('includes/footer.php');
+    ?>
 
-    </div>
+</body>
+</html>

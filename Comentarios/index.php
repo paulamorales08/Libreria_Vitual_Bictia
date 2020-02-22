@@ -11,9 +11,9 @@ if (isset($_POST) && !empty($_POST)) {
 }
 $todosLosComentarios = $comentario1->obtenerComentarios();
 ?>
-<form method="POST">
+<form method="POST" class="m3">
     <label for="fechaComentario">Fecha</label>
-    <input name="fechaComentario" id="fechaComentario" placeholder="Ingresar Fecha" type="text" require></br>
+    <input class="form-control" name="fechaComentario" id="fechaComentario" placeholder="Ingresar Fecha" type="text" require></br>
     <label for="comentario">Comentario</label>
     <textarea name="comentario" id="comentario"></textarea></br>
     <label for="valoracion">Valoracion</label>

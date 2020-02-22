@@ -42,7 +42,7 @@ if(isset($_POST) && !empty($_POST)){
         </div>
         <div class="form-group col-md-6">
           <label for="Contrasena">Contraseña</label>
-          <input type="password" class="form-control" id="Contrasena" name="Contrasena" placeholder="Ingresa una contraseña" required max="100">
+          <input type="password" class="form-control" id="Contrasena" name="Contrasena" placeholder="Ingresa una contraseña" required max="100" pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" >
         </div>
       </div>
 
