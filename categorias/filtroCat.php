@@ -2,7 +2,6 @@
 include('Categorias.php');
 
 $categoria = new Categoria();
-
 $categorias = $categoria->obtenerCategorias();
 
 if (isset($_GET) && !empty($_GET)) {
@@ -48,7 +47,6 @@ if (isset($_GET) && !empty($_GET)) {
                         echo "<a class='dropdown-item' href='?idCategoria=$recorridoTodasCat->idCategoria'>$recorridoTodasCat->nombreCategoria</a>";
                     }
                     ?>
-
                 </div>
             </li>
 
