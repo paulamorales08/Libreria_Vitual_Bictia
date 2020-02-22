@@ -1,8 +1,9 @@
 <?php
 include_once('Categorias.php');
 include_once('../moduloImagenes/claseImagen.php');
-$imagen = new Imagen();
 $categoria = new Categoria();
+$imagen = new Imagen();
+
 
 
 if (isset($_GET) && !empty($_GET)) {
@@ -40,18 +41,17 @@ $nombreCat = $categoria->obtenerCategoria($consultaLibro);
                 echo "<div class='card text-center shadow-sm p-3 mb-5 bg-white rounded' style='width: 18rem;'>";
 
                 $idLibro = $libroRecorrido->idLibro;
-               
-           
-                $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
-                  var_dump($primeraImagenLibro);  
-                  if($primeraImagenLibro==null){
-                    echo "No hay imagen";   
-                  }
-                  else{
-                      echo $primeraImagenLibro->$urlImagen;
-                      
-                   //echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' alt='$primeraImagenLibro->nombreImagen'>";
-                  }
+
+                        $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
+
+                        //Verificamos si la consulta obtuvo resultados.
+                        if($primeraImagenLibro==null){
+                            //Si la consulta no trae registros publicamos una imagen genérica.
+                            echo "<td> Sin imagen</td>";
+                        }
+                        else{
+                            echo "<td> <img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block' alt='$primeraImagenLibro->nombreImagen' width='100px'/></td>";
+                        }
         
                 echo "<div class='card-body'>";
                 echo "<h5 class='card-title'>$libroRecorrido->nombreLibro</h5>";
