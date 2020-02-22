@@ -1,9 +1,9 @@
 <?php
 include_once('Categorias.php');
 include_once('../moduloImagenes/claseImagen.php');
-$todaImagen = new Imagen();
-$categoria = new Categoria();
 
+$imagen = new Imagen();
+$categoria = new Categoria();
 
 if (isset($_GET) && !empty($_GET)) {
     $consultaLibro = $_GET['idCategoria'];
@@ -42,14 +42,14 @@ $nombreCat = $categoria->obtenerCategoria($consultaLibro);
                 $idLibro = $libroRecorrido->idLibro;
                
            
-                $primeraImagenLibro = $todaImagen->obtenerPrimeraImagen($idLibro);
+                $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
                   var_dump($primeraImagenLibro);  
                   if($primeraImagenLibro==null){
                     echo "No hay imagen";   
                   }
                   else{
-                      echo $primeraImagenLibro->$urlImagen;
-                      
+                     // echo $primeraImagenLibro->$urlImagen;
+                      echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block' alt='$primeraImagenLibro->nombreImagen' width='100px'/>";
                    //echo "<img src='$todaImagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' alt='$primeraImagenLibro->nombreImagen'>";
                   }
         
