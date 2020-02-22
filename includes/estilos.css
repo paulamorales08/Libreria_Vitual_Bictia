@@ -134,3 +134,6 @@
 .nuevoComentario .formulario textarea{
     resize: none;
 }
+.descripcion{
+    font-size: .7em;
+}
