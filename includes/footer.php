@@ -8,7 +8,7 @@
         Andrés García <br>
         Bryan Piñeros <br>
         Julián Rivera<br>
-        Paula MOrales<br>
+        Paula Morales<br>
         Redvers Escobar.
 
     </div>
