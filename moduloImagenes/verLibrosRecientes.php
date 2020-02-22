@@ -30,10 +30,19 @@
           echo "<tr class='text-center'>";
           echo "<td> $recorridoLibro->nombreLibro </td>";
             //Consulta a la tabla de Imagenes
-            $idLibro = $recorridoLibro->idLibro;
-            $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
-            //echo "<td> $primeraImagenLibro->urlImagen</td>";
-            echo "<td> <img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block w-100' alt='$primeraImagenLibro->nombreImagen' width='300px'/></td>";
+              $idLibro = $recorridoLibro->idLibro;
+              //echo"<td> $recorridoLibro->idLibro </td>";
+              echo"<td>";
+              $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
+                var_dump($primeraImagenLibro);  
+                if($primeraImagenLibro==null){
+                  echo "No hay imagen";
+                }
+                else{
+                  echo "<td> $primeraImagenLibro->urlImagen</td>";
+                  echo "<td> <img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block w-100' alt='$primeraImagenLibro->nombreImagen' width='300px'/></td>";
+                }
+              echo "</td>";
 
 
           echo "<td class='text-justify'> $recorridoLibro->descripcion </td>";
