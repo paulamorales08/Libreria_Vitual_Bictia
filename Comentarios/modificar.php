@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>//pagina de iniciar comentarios
 <html lang="en">
 
 <head>
