@@ -1,7 +1,7 @@
 <?php
 include_once('Categorias.php');
 include_once('../moduloImagenes/claseImagen.php');
-$imagen = new Imagen();
+$todaImagen = new Imagen();
 $categoria = new Categoria();
 
 
@@ -42,7 +42,7 @@ $nombreCat = $categoria->obtenerCategoria($consultaLibro);
                 $idLibro = $libroRecorrido->idLibro;
                
            
-                $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
+                $primeraImagenLibro = $todaImagen->obtenerPrimeraImagen($idLibro);
                   var_dump($primeraImagenLibro);  
                   if($primeraImagenLibro==null){
                     echo "No hay imagen";   
@@ -50,7 +50,7 @@ $nombreCat = $categoria->obtenerCategoria($consultaLibro);
                   else{
                       echo $primeraImagenLibro->$urlImagen;
                       
-                   //echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' alt='$primeraImagenLibro->nombreImagen'>";
+                   //echo "<img src='$todaImagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' alt='$primeraImagenLibro->nombreImagen'>";
                   }
         
                 echo "<div class='card-body'>";
@@ -68,8 +68,8 @@ $nombreCat = $categoria->obtenerCategoria($consultaLibro);
                 echo "</br>";
                 echo "</div>";
 
-                //$primeraImagenLibro= $imagen->obtenerPrimeraImagen($libroRecorrido->idLibro);
-                //echo "<td> <img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block w-100' alt='$primeraImagenLibro->nombreImagen' width='300px'/></td>";
+                //$primeraImagenLibro= $todaImagen->obtenerPrimeraImagen($libroRecorrido->idLibro);
+                //echo "<td> <img src='$todaImagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block w-100' alt='$primeraImagenLibro->nombreImagen' width='300px'/></td>";
             }
             ?>
         </div>
