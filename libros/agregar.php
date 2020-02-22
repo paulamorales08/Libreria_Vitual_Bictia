@@ -1,23 +1,23 @@
 <?php
     include('libros.php');
+    include('../categorias/Categorias.php');
     $libro = new Libros();
+    $categoria = new Categoria();
     $autor = new Autores();
     $editorial = new Editoriales();
-    $categoria = new Categorias();
 
     if ( isset($_POST) && !empty($_POST) ) {
         $insert = $libro->crearLibro($_POST);
         if ($insert) {
             echo "Registro exitoso";
         }else{
-            echo "Fallo.....";
-            var_dump($insert);  
+            echo "Fallo......";
         }
     }
 
     $todosLosLibros = $libro->getLibros();
     $todosLosAutores = $autor->getAllAutores();
-    $todasLasCategorias = $categoria->getAllCategorias();
+    $todasLasCategorias = $categoria->obtenerCategorias();
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +30,9 @@
     <title>Libreria</title>
 </head>
 <body>
+
+<h1>Agregar Nuevo Libro</h1>
+
 <form  method="POST" class="w-100 p-4">
         <div class="form-group">
             <label for="libro">Libro</label>
@@ -53,8 +56,8 @@
                 <option value="-"> - </option>
                 <?php
                     $todosLosAutores = $autor->getAllAutores();
-                    while ($pers = mysqli_fetch_object($todosLosAutores)) {
-                        echo "<option value='$pers->idAutor'>$pers->nombreAutor</option>";
+                    while ($per = mysqli_fetch_object($todosLosAutores)) {
+                        echo "<option value='$per->idAutor'>$per->nombreAutor</option>";
                     }
                 ?>
             </select>
@@ -67,8 +70,8 @@
                 <option value="-"> - </option>
                 <?php
                     $todasLasEditoriales = $editorial->getAllEditoriales();
-                    while ($pers = mysqli_fetch_object($todasLasEditoriales)) {
-                        echo "<option value='$pers->idEditorial'>$pers->nombreEditorial</option>";
+                    while ($per = mysqli_fetch_object($todasLasEditoriales)) {
+                        echo "<option value='$per->idEditorial'>$per->nombreEditorial</option>";
                     }
                 ?>
             </select>       
@@ -78,9 +81,10 @@
             <select name="idCategoria" id="idCategoria" class="form-control">
                 <option value="-"> - </option>
                 <?php
-                    $todasLasCategorias = $categoria->getAllCategorias();
-                    while ($pers = mysqli_fetch_object($todasLasCategorias)) {
-                        echo "<option value='$pers->idCategoria'>$pers->nombreCategoria</option>";
+                    $todasLasCategorias = $categoria->obtenerCategorias();
+                    while ($per = mysqli_fetch_object($todasLasCategorias)) {
+                        echo "<option value='$per->idCategoria'>$per->nombreCategoria</option>";
+                        var_dump($per->idCategoria);
                     }
                 ?>
             </select> 
@@ -132,7 +136,7 @@
                         echo "<td scope='row'>$datosAutor->nombreAutor</td>";
 
                         $cat = $lib->idCategoria;
-                        $datosCategoria = $categoria->getCategoria($cat);
+                        $datosCategoria = $categoria->obtenerCategorias($cat);
 
                         echo "<td scope='row'>$datosCategoria->nombreCategoria</td>";
 

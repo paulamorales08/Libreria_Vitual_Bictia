@@ -1,5 +1,5 @@
 <?php
-    include('../Conn/Database.php');
+    include_once('../Conn/Database.php');
 
     class Libros{
 
@@ -24,13 +24,15 @@
             $descripcion = $data['descripcion'];
             $fechaPublicacion = $data['fechaPublicacion'];
             $precio = $data['precio'];
+            $estado = $data['estado'];
             $idAutor = $data['idAutor'];
             $idEditorial = $data['idEditorial'];
             $idCategoria = $data['idCategoria'];
-            $estado = $data['estado'];
-
-            $sql = "INSERT INTO Libros (nombreLibro, descripcion, fechaPublicacion, precio, estado, idEditorial, idAutor, idCategoria) 
-                    VALUES ('$nombreLibro', '$descripcion', '$fechaPublicacion', '$precio', '$estado', '$idEditorial', '$idAutor', '$idCategoria')";
+                    
+            $sql = "INSERT INTO libros 
+                    (nombreLibro, descripcion, fechaPublicacion, precio, estado, idEditorial, idAutor, idCategoria) 
+                    VALUES 
+                    ('$nombreLibro', '$descripcion', '$fechaPublicacion', '$precio', '$estado', '$idEditorial', '$idAutor', '$idCategoria')";
             
             $res = mysqli_query($this->conn, $sql);
 
@@ -67,12 +69,14 @@
             $sql = "UPDATE Libros SET nombreLibro = '$libro', descripcion = '$descripcion', fechaPublicacion = '$fechaPublicacion', 
                                       fechaPublicacion = '$fechaPublicacion', precio = '$precio', estado = '$estado', idEditorial = '$editorial',
                                       idAutor = '$autor', idCategoria = '$categoria'
-                    WHERE id = '$idLibro' ";
-        }
+                    WHERE idLibro = '$idLibro' ";
+            mysqli_query($this->conn, $sql);
 
-        function deleteLibro($idLibro){
-            $sql = "DELETE FROM Personas WHERE id = $idLibro";
-            return mysqli_query($this->conn, $sql);
+            if ($sql) {
+                return true;
+            }else{
+                return false;
+            }
         }
 
     }
@@ -119,30 +123,6 @@
 
         function getAllAutores(){
             $sql = "SELECT * FROM autores ORDER BY nombreAutor";
-            return mysqli_query($this->conn, $sql);
-        }
-    }
-
-    // Categorias
-
-    class Categorias{
-        public $idCategoria;
-        public $nombreCategoria;
-        public $estado;
-        public $conn;
-
-        function __construct(){
-            $db = new Databse();
-            $this->conn = $db->connectToDatabase();
-        }
-
-        function getCategoria($idCategoria){
-            $sql = "SELECT * FROM categorias WHERE idCategoria=$idCategoria";
-            return mysqli_fetch_object(mysqli_query($this->conn, $sql));
-        }
-
-        function getAllCategorias(){
-            $sql = "SELECT * FROM categorias ORDER BY nombreCategoria";
             return mysqli_query($this->conn, $sql);
         }
     }

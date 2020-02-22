@@ -1,13 +1,15 @@
 <?php
     include_once('libros.php');
+    include_once('../categorias/Categorias.php');
     $libro = new Libros();
     $dp = $libro->getLibro($_GET['id']);
     
     if ( isset($_POST) && !empty($_POST)) {
         $modificar = $libro->updateLibro($_POST);
+        var_dump($modificar);
         if ($modificar) {
             echo "Modificación exitosa";
-            //header('location:index.php');
+            header('location:index.php');
         }else{
             echo "Error al modificar";
         }
@@ -35,8 +37,7 @@
         </div>
         <div class="form-group">
             <label for="libro">Libro</label>
-            <input name='libro' id="libro" type="text" 
-            require class="form-control" value="<?= $dp->nombreLibro ?>">
+            <input name='libro' id="libro" type="text"  require class="form-control" value="<?= $dp->nombreLibro ?>">
         </div>
         <div class="form-group">
             <label>Descripción</label>
@@ -45,7 +46,7 @@
         <div class="form-group">
             <label for="fechaPublicacion">Fecha de Publicacion</label>
             <input name='fechaPublicacion' id='fechaPublicacion' type="date" placeholder="Ingresar la fecha Publicacion" 
-            require class="form-control" value="<?= $dp->fechaModificacion ?>">
+            require class="form-control" value="<?= $fechaCorta = $dp->fechaPublicacion?>">
         </div>
         <div class="form-group">
             <label for="precio">Precio</label>
@@ -54,20 +55,26 @@
         </div>
         <div class="form-group">
             <label for="idAutor">Autor</label>
-            <input name='precio' id='precio' type="text" placeholder="Ingresar el precio" 
+            <input name='idAutor' id='idAutor' type="text" placeholder="Ingresar el idAutor" 
             require class="form-control" value="<?= $dp->idAutor ?>">
         </div>
         <div>
         </div>
         <div class="form-group">
             <label for="idEditorial">Editorial</label>
-            <input name='precio' id='precio' type="text" placeholder="Ingresar el precio" 
+            <input name='idEditorial' id='idEditorial' type="text" placeholder="Ingresar el idEditorial" 
             require class="form-control" value="<?= $dp->idEditorial ?>">      
         </div>
         <div class="form-group">
             <label for="idCategoria">Categoria</label>
-            <input name='precio' id='precio' type="text" placeholder="Ingresar el precio" 
-            require class="form-control" value="<?= $dp->idCategoria ?>"> 
+            <input name='idCategoria' id='idCategoria' type="text" placeholder="Ingresar el idCategoria" 
+            require class="form-control" value="
+            <?= 
+                include_once('../categorias/Categorias.php');
+                $categoria = new Categoria();
+                $cat = $categoria->obtenerCategoria($dp->idLibro);
+                var_dump($dp->idLibro);
+            ?>"> 
         </div>
         <div class="form-group">
             <label for="estado">Estado</label>
