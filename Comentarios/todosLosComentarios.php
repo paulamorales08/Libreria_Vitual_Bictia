@@ -1,13 +1,15 @@
 <?php
 include('../includes/links.php');
 include_once('Comentarios.php');
-$simulacionIdUsuario=1; //Para confirmar el funcionamiento del modificar  comentario.
+$simulacionIdUsuario= $_SESSION['idUsuario']; //Para confirmar el funcionamiento del modificar  comentario.
 $comentario1 = new Comentario();
 $totalRegistros=0;
 $conteo=0;
 $valoracionTotal=0;
 $promedioValoracion = 0;
 $promedioRedondeado=0;
+$rol=$_SESSION['rol'];
+echo $rol;
 
 if (isset($_POST) && !empty($_POST)) {
     $insert = $comentario1->crearComentario($_POST);
@@ -22,6 +24,7 @@ if (isset($_GET) && !empty($_GET)) {
     $idLibro=$_GET['idLibro'];
     $todosLosComentarios = $comentario1-> todosComentariosLibro($idLibro);  
 }
+
 ?>
     <section class="comentarios">
         <div class="titulo">
@@ -55,9 +58,20 @@ if (isset($_GET) && !empty($_GET)) {
                         echo " <div class='valoracion'><strong>Valoración:</strong> <img src='../includes/imagenes/valoracion_cinco.png' alt='Valoración 5' width='80px'></div></div>";
                         break;
                 }
-                echo "<p class='card-text'>$come->comentario</p>";
-                echo "<a href='../Comentarios/modificar.php?idComentario=$come->idComentario&idLibro=$idLibro' class='card-link'>Modificar</a>";
-                echo "<a href='../Comentarios/Eliminar.php?idComentario=$come->idComentario&idLibro=$idLibro' class='card-link'>Eliminar</a>";
+                
+                 echo "<p class='card-text'>$come->comentario</p>";
+                 echo "usuario $come->idUsuario</br>";
+                 echo "rol:$rol </br>";
+                if($simulacionIdUsuario==$come->idUsuario){
+
+                    echo ('El usuario puede modificar');
+               // echo "<a href='../Comentarios/modificar.php?idComentario=$come->idComentario&idLibro=$idLibro' class='card-link'>Modificar</a>";
+                }
+                if($rol==0){
+                    echo ("el usuario puedo eliminar");
+                //echo "<a href='../Comentarios/Eliminar.php?idComentario=$come->idComentario&idLibro=$idLibro' class='card-link'>Eliminar</a>";
+               }
+                
             echo "</div>";
             echo "</div>";
             $valoracionTotal+=$come->valoracion;
