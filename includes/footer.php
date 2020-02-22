@@ -1,8 +1,3 @@
-<?php
-    echo "Este es el footer <br>";
-?>
-
-
 <section class="footer">
     <div class="izq">
         Taller Nro. 4. <br>
@@ -13,7 +8,7 @@
         Andrés García <br>
         Bryan Piñeros <br>
         Julián Rivera<br>
-        Paula MOrales<br>
+        Paula Morales<br>
         Redvers Escobar.
 
     </div>

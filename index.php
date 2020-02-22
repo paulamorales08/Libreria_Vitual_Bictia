@@ -1,3 +1,15 @@
+<?php
+    include("usuarios/usuarios.php");
+    $usuario = new Usuario();
+    session_start();
+
+    $Nombre = $_SESSION['Nombre'];
+    $Apellido = $_SESSION['Apellido'];
+
+    echo "Bienvenido $Nombre $Apellido";
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +21,15 @@
 <header>
 <a href="usuarios/registroUsuario.php" class="btn btn-success"> Crear usuario</a>
 <a href="usuarios/login.php" class="btn btn-success"> Iniciar Sesión</a>
+<a href="usuarios/logOut.php" class="btn btn-success"> Cerrar sesión</a>
+
+ 
+
 </header>
 <body>
 
-
+ <?php
+        
+ ?> 
 </body>
 </html>

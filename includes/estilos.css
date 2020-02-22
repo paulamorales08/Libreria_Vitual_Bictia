@@ -97,7 +97,16 @@
     padding: 5px 10px;
     color: grey;
 }
+.comentarios .valores {
+    display: flex;
+    justify-content: space-between;
+}
 .comentarios .fechaComentario{
+    font-size: .9em;
+    padding: 5px 0;
+    color: grey;
+}
+.comentarios .valoracion{
     font-size: .9em;
     padding: 5px 0;
     color: grey;
@@ -124,4 +133,7 @@
 }
 .nuevoComentario .formulario textarea{
     resize: none;
+}
+.descripcion{
+    font-size: .7em;
 }
