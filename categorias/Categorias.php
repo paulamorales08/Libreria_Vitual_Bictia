@@ -7,6 +7,8 @@ class Categoria {
     public $estado;
     public $cat;
     public $conn;
+    public $root = ROOT;
+    public $path = PATH;
 
     function __construct()
     {
