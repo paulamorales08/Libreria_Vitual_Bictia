@@ -1,10 +1,9 @@
 <?php
 include_once('Categorias.php');
 include_once('../moduloImagenes/claseImagen.php');
-$categoria = new Categoria();
+
 $imagen = new Imagen();
-
-
+$categoria = new Categoria();
 
 if (isset($_GET) && !empty($_GET)) {
     $consultaLibro = $_GET['idCategoria'];
@@ -41,17 +40,19 @@ $nombreCat = $categoria->obtenerCategoria($consultaLibro);
                 echo "<div class='card text-center shadow-sm p-3 mb-5 bg-white rounded' style='width: 18rem;'>";
 
                 $idLibro = $libroRecorrido->idLibro;
-
-                        $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
-
-                        //Verificamos si la consulta obtuvo resultados.
-                        if($primeraImagenLibro==null){
-                            //Si la consulta no trae registros publicamos una imagen genérica.
-                            echo "<td> Sin imagen</td>";
-                        }
-                        else{
-                            echo "<td> <img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block' alt='$primeraImagenLibro->nombreImagen' width='100px'/></td>";
-                        }
+               
+                $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
+                   
+                  if($primeraImagenLibro==null){
+                    echo "No hay imagen";   
+                    //var_dump($primeraImagenLibro);
+                    //var_dump($idLibro);
+                  }
+                  else{
+                     // echo $primeraImagenLibro->$urlImagen;
+                      echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='card-img-top' alt='$primeraImagenLibro->nombreImagen'/>";
+                   //echo "<img src='$todaImagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' alt='$primeraImagenLibro->nombreImagen'>";
+                  }
         
                 echo "<div class='card-body'>";
                 echo "<h5 class='card-title'>$libroRecorrido->nombreLibro</h5>";
@@ -68,8 +69,8 @@ $nombreCat = $categoria->obtenerCategoria($consultaLibro);
                 echo "</br>";
                 echo "</div>";
 
-                //$primeraImagenLibro= $imagen->obtenerPrimeraImagen($libroRecorrido->idLibro);
-                //echo "<td> <img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block w-100' alt='$primeraImagenLibro->nombreImagen' width='300px'/></td>";
+                //$primeraImagenLibro= $todaImagen->obtenerPrimeraImagen($libroRecorrido->idLibro);
+                //echo "<td> <img src='$todaImagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block w-100' alt='$primeraImagenLibro->nombreImagen' width='300px'/></td>";
             }
             ?>
         </div>

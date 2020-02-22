@@ -26,19 +26,19 @@ if(isset($_POST) && !empty($_POST)){
 
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="nomUsuario">Nombre Usuario</label>
-          <input type="text" class="form-control" id="nomUsuario" name="nomUsuario" placeholder="Ingresa nombre de usuario" required max="50">
-        </div>
-        <div class="form-group col-md-6">
-
           <label for="Nombres">Nombres</label>
           <input type="text" class="form-control" id="Nombres" name="Nombres" placeholder="Nombres" required max="50">
         </div>
-      </div>
-      <div class="form-row">
         <div class="form-group col-md-6">
           <label for="Apellidos">Apellidos</label>
           <input type="text" class="form-control" id="Apellidos" name="Apellidos" placeholder="Apellidos" required max="50">
+        </div>
+      </div>
+      <div class="form-row">
+       
+        <div class="form-group col-md-6">
+          <label for="nomUsuario">Nombre Usuario</label>
+          <input type="text" class="form-control" id="nomUsuario" name="nomUsuario" placeholder="Ingresa nombre de usuario" required max="50">
         </div>
         <div class="form-group col-md-6">
           <label for="Contrasena">Contraseña</label>
@@ -47,7 +47,8 @@ if(isset($_POST) && !empty($_POST)){
       </div>
 
       <div class="clearfix">
-        <button class="btn btn-success float-left" type="submit">Registrar</button>
+        <a href="http://localhost/Libreria_Vitual_Bictia/moduloImagenes/index.php"> <button class="btn btn-success float-left" type="submit">Registrar</button></a>
+        <a href="http://localhost//Libreria_Vitual_Bictia/" class="btn btn-danger"> Volver</a>
 
       </div>
     </form>
