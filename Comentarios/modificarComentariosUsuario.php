@@ -18,6 +18,41 @@
     include('Comentarios.php');
     $comentario1 = new Comentario();
     $dc = $comentario1->obtenerComentario($_GET['idComentario']);
+    $idUsuario = $comentario1->obtenerComentario($_GET['idUsuario']);
+    $_SESSION['idUsuario'];
+   
+    if( $dcUsuario== $_SESSION['idUsuario']){
+        header("location:modificar.php?idComentario=$idComentario");
+
+    }else{
+       echo "error no identifico el usuario";
+
+    }
+    
+
+    ?>
+    
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Imágenes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../includes/estilos.css">
+    <link rel="stylesheet" href="../includes/fontawesome/css/all.css">
+</head>
+</head>
+
+<body>
+    <h2 class="text-center font-weight-light">Modificar Comentarios</h2>
+    <?php
+    include('Comentarios.php');
+    $comentario1 = new Comentario();
+    $dc = $comentario1->obtenerComentario($_GET['idComentario']);
     if (isset($_POST) && !empty($_POST)) {
         $modificar = $comentario1->modificarComentario($_POST);
         if ($modificar) {
@@ -80,6 +115,9 @@
  
 
 
+</body>
+
+</html>
 </body>
 
 </html>
