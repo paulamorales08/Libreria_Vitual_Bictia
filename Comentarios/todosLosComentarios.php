@@ -1,7 +1,7 @@
 <?php
 include('../includes/links.php');
 include_once('Comentarios.php');
-$simulacionIdUsuario=1; //Para confirmar el funcionamiento del modificar comentario.
+$simulacionIdUsuario=1; //Para confirmar el funcionamiento del modificar  comentario.
 $comentario1 = new Comentario();
 $totalRegistros=0;
 $conteo=0;
