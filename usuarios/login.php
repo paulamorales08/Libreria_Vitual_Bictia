@@ -28,7 +28,7 @@ if (!empty($_POST)) {
         $_SESSION['Nombre'] = $row['nombres'];
         $_SESSION['Apellido'] = $row['apellidos'];
 
-        header("location: http://localhost//Libreria_Vitual_Bictia/");
+        header("location: http://localhost/Libreria_Vitual_Bictia/moduloImagenes/index.php");
     } else {
         $error = "Usuario o Password incorrectos. Por favor intente de nuevo";
     }
@@ -48,7 +48,7 @@ if (!empty($_POST)) {
 
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="Usuario">Nombre Usuario</label>
+          <label for="Usuario">Usuario</label>
           <input type="text" class="form-control" id="Usuario" name="Usuario" placeholder="Ingresa usuario" required max="50">
         </div> 
       </div>
@@ -62,6 +62,8 @@ if (!empty($_POST)) {
 
       <div class="clearfix">
         <button class="btn btn-success float-left" type="submit">Iniciar sesion</button>
+        <a href="http://localhost//Libreria_Vitual_Bictia/" class="btn btn-danger"> Volver</a>
+
 
       </div>
     </form>

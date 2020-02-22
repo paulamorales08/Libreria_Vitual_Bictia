@@ -1,5 +1,17 @@
 <?php
 echo "Este es el encabezado <br>";
+//Sesion
+
+    include("../usuarios/usuarios.php");
+    $usuario = new Usuario();
+    session_start();
+
+    /* $Nombre = $_SESSION['Nombre'];
+    $Apellido = $_SESSION['Apellido']; */
+
+    /* echo "Bienvenido $Nombre $Apellido"; */
+
+
 // CATEGORIAS INICIO
 include('../categorias/Categorias.php');
 
@@ -58,8 +70,22 @@ if (isset($_GET) && !empty($_GET)) {
       </li>
     </ul>
     <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar Libro" aria-label="Search">
+      <input class="form-control mr-sm-1" type="search" placeholder="Buscar Libro" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+ 
+      
+      <?php
+
+          if (isset($_SESSION['idUsuario'])) {
+            $Nombre = $_SESSION['Nombre'];
+            $Apellido = $_SESSION['Apellido'];
+            echo "Bienvenido $Nombre $Apellido";
+            echo "<a href='..//usuarios/logOut.php' class='btn btn-btn'> Cerrar sesión</a>";
+          }else{
+            echo "<a href='../usuarios/registroUsuario.php' class='btn btn-btn'>Registrarse</a>";
+            echo "<a href='../usuarios/login.php' class='btn btn-btn'> Iniciar Sesión</a>";
+          }
+      ?>
     </form>
   </div>
 </nav>

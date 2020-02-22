@@ -1,17 +1,16 @@
 <?php
     include('libros.php');
     $libro = new Libros();
+    $categoria = new Categorias();
     $autor = new Autores();
     $editorial = new Editoriales();
-    $categoria = new Categorias();
 
     if ( isset($_POST) && !empty($_POST) ) {
         $insert = $libro->crearLibro($_POST);
         if ($insert) {
             echo "Registro exitoso";
         }else{
-            echo "Fallo.....";
-            var_dump($insert);  
+            echo "Fallo......";
         }
     }
 
@@ -30,6 +29,9 @@
     <title>Libreria</title>
 </head>
 <body>
+
+<h1>Agregar Nuevo Libro</h1>
+
 <form  method="POST" class="w-100 p-4">
         <div class="form-group">
             <label for="libro">Libro</label>
@@ -53,8 +55,8 @@
                 <option value="-"> - </option>
                 <?php
                     $todosLosAutores = $autor->getAllAutores();
-                    while ($pers = mysqli_fetch_object($todosLosAutores)) {
-                        echo "<option value='$pers->idAutor'>$pers->nombreAutor</option>";
+                    while ($per = mysqli_fetch_object($todosLosAutores)) {
+                        echo "<option value='$per->idAutor'>$per->nombreAutor</option>";
                     }
                 ?>
             </select>
@@ -65,24 +67,24 @@
             <label for="idEditorial">Editorial</label>
             <select name="idEditorial" id="idEditorial" class="form-control">
                 <option value="-"> - </option>
-            <?php
-                $todasLasEditoriales = $editorial->getAllEditoriales();
-                while ($pers = mysqli_fetch_object($todasLasEditoriales)) {
-                    echo "<option value='$pers->idEditorial'>$pers->nombreEditorial</option>";
-                }
-            ?>
+                <?php
+                    $todasLasEditoriales = $editorial->getAllEditoriales();
+                    while ($per = mysqli_fetch_object($todasLasEditoriales)) {
+                        echo "<option value='$per->idEditorial'>$per->nombreEditorial</option>";
+                    }
+                ?>
             </select>       
         </div>
         <div class="form-group">
             <label for="idCategoria">Categoria</label>
             <select name="idCategoria" id="idCategoria" class="form-control">
                 <option value="-"> - </option>
-            <?php
-                $todasLasCategorias = $categoria->getAllCategorias();
-                while ($pers = mysqli_fetch_object($todasLasCategorias)) {
-                    echo "<option value='$pers->idCategoria'>$pers->nombreCategoria</option>";
-                }
-            ?>
+                <?php
+                    $todasLasCategorias = $categoria->getAllCategorias();
+                    while ($per = mysqli_fetch_object($todasLasCategorias)) {
+                        echo "<option value='$per->idCategoria'>$per->nombreCategoria</option>";
+                    }
+                ?>
             </select> 
         </div>
         <div class="form-group">
