@@ -4,23 +4,28 @@ $imagen = new Imagen();
 $libro = new Libro();
 
 $todasLasImagenes = $imagen->obtenerImagenesActivas($idLibro);
-?>
 
+?>
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
 
         <?php
         $conteo = 0;
-        while ($imagenLibro = mysqli_fetch_object($todasLasImagenes)) {
-            if ($conteo == 0) {
-                echo "<div class='carousel-item active' data-interval='1000'>";
-                echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$imagenLibro->urlImagen' class='d-block w-100' alt='$imagenLibro->nombreImagen' width='300px'/></div>";
-            } else {
-                echo "<div class='carousel-item' data-interval='1000'>";
-                echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$imagenLibro->urlImagen' class='d-block w-100' alt='$imagenLibro->nombreImagen' width='300px'/></div>";
+        if($todasLasImagenes->lengths===null){
+                    echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/imagenNoEncontrada.png' alt='Imagen no encontrada' width='300px'/></div>";
+        }
+        else{
+            while ($imagenLibro = mysqli_fetch_object($todasLasImagenes)) {
+                if ($conteo == 0) {
+                    echo "<div class='carousel-item active' data-interval='1000'>";
+                    echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$imagenLibro->urlImagen' class='d-block w-100' alt='$imagenLibro->nombreImagen' width='300px'/></div>";
+                } else {
+                    echo "<div class='carousel-item' data-interval='1000'>";
+                    echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$imagenLibro->urlImagen' class='d-block w-100' alt='$imagenLibro->nombreImagen' width='300px'/></div>";
+                }
+                $conteo++;
             }
-            $conteo++;
         }
         ?>
 
