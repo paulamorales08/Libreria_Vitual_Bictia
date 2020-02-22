@@ -46,7 +46,7 @@ class Imagen
 
     function obtenerPrimeraImagen($idLibro)
     {
-        $sql = "SELECT * FROM imagenes WHERE idLibro=$idLibro ORDER BY estado DESC, orden ASC LIMIT 1";
+        $sql = "SELECT * FROM imagenes WHERE idLibro=$idLibro AND estado =1 ORDER BY estado DESC, orden ASC LIMIT 1";
         return mysqli_fetch_object(mysqli_query($this->conn, $sql));
     }
 

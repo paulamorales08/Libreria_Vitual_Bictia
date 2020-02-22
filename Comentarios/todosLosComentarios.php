@@ -12,7 +12,7 @@ $promedioRedondeado=0;
 if (isset($_POST) && !empty($_POST)) {
     $insert = $comentario1->crearComentario($_POST);
     if ($insert) {
-        echo "<br><div class='content'><div class='alert alert-success' role='alert'>Comentario registrado satisfactoriamente.</div></div>";
+        echo "<br><div class='container'><div class='alert alert-success' role='alert'>Comentario registrado satisfactoriamente.</div></div>";
     } else {
         echo "<div class='alert alert-warnig' role='alert'>Ocurrió un error al registrar el comentario.</div>";
     }

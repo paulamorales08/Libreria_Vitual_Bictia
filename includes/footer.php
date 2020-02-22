@@ -1,8 +1,3 @@
-<?php
-    echo "Este es el footer <br>";
-?>
-
-
 <section class="footer">
     <div class="izq">
         Taller Nro. 4. <br>
