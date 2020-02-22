@@ -1,5 +1,6 @@
 <?php 
-include_once('../Conn/Database.php');
+include_once ('../Conn/Database.php');
+
 class Categoria {
     public $idCategoria;
     public $nombreCategoria;
@@ -7,6 +8,8 @@ class Categoria {
     public $estado;
     public $cat;
     public $conn;
+    public $root = ROOT;
+    public $path = PATH;
 
     function __construct()
     {
@@ -67,7 +70,6 @@ class Categoria {
         //$sql = "SELECT * FROM categorias WHERE nombreCategoria LIKE '%$consulta%'";
         return mysqli_query($this->conn, $sql);
     }
-
 }
 
 ?>

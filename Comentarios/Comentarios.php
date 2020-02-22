@@ -13,6 +13,7 @@ class Comentario
     public $estado;
     public $idLibro;
     public $idUsuario;
+    public $totalValoracion;
 
     function __construct()
     {
@@ -23,7 +24,6 @@ class Comentario
 
     function crearComentario($data)
     {
-        echo "Entró en Crear...";
         $fechaComentario = $data['fechaComentario'];
         $comentario = $data['comentario'];
         $valoracion = $data['valoracion'];
@@ -33,7 +33,7 @@ class Comentario
         $sql = "INSERT INTO comentarios(fechaComentario,comentario,valoracion,estado,idLibro,idUsuario)
                 VALUES('$fechaComentario','$comentario','$valoracion','$estado','$idLibro','$idUsuario')";
         $respuesta = mysqli_query($this->conn, $sql);
-        echo $respuesta;
+        //echo $respuesta;
         if ($respuesta) {
             return true;
         } else {
@@ -60,9 +60,9 @@ class Comentario
         $idLibro = $data['idLibro'];
         $idUsuario = $data['idUsuario'];
         $sql = "UPDATE comentarios SET 
-    fechaComentario='$fechaComentario',comentario='$comentario',
-    valoracion='$valoracion',estado='$estado',idLibro='$idLibro',
-    idUsuario='$idUsuario' WHERE idComentario='$idComentario'";
+        fechaComentario='$fechaComentario',comentario='$comentario',
+        valoracion='$valoracion',estado='$estado',idLibro='$idLibro',
+        idUsuario='$idUsuario' WHERE idComentario='$idComentario'";
         $update = mysqli_query($this->conn, $sql);
         if ($update) {
             return true;
@@ -74,9 +74,11 @@ class Comentario
     function eliminarComentario($idComentario){
         $sql="DELETE FROM comentarios WHERE idComentario=$idComentario";
         return mysqli_query($this->conn,$sql);
+        echo "Se eliminò";
     }
-    function verTodos($idLibro){
-        $sql = "SELECT * FROM comentarios WHERE idLibro= $idLibro";
+    
+    function todosComentariosLibro($idLibro){
+        $sql = "SELECT * FROM comentarios WHERE idLibro=$idLibro AND estado=1 ORDER BY idComentario DESC"; //Ordena por el más reciente de primero.
         return mysqli_query($this->conn, $sql);
     }
 }

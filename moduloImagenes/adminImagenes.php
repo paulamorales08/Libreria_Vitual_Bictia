@@ -21,8 +21,10 @@
     $datosDelLibro = $libro->obtenerLibro($idLibro);
     ?>
 
+
 <div class="container w-75 p-3 shadow p-3 mb-5 bg-white rounded text-dark">
         <div class="form-group pt-4">
+          <div class="btn btn-primary btn-sm" onclick="history.back()">Regresar</div>
             <h2 class="text-center font-weight-light">Administrador de Imágenes</h2>
             <h3 class="text-center font-weight-light texto_verde"><?= "$datosDelLibro->nombreLibro" ?></h3>
         </div>
