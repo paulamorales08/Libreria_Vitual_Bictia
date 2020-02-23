@@ -5,7 +5,7 @@ $Holi = new Databse();
 session_start();
 
 if (isset($_SESSION["id_usuario"])) {
-    header("Location: http://localhost//Libreria_Vitual_Bictia/");
+    header("Location: http://localhost/Libreria_Vitual_Bictia/");
 }
 
 if (!empty($_POST)) {
@@ -62,7 +62,7 @@ if (!empty($_POST)) {
 
       <div class="clearfix">
         <button class="btn btn-success float-left" type="submit">Iniciar sesion</button>
-        <a href="http://localhost//Libreria_Vitual_Bictia/" class="btn btn-danger"> Volver</a>
+        <a href="http://localhost/Libreria_Vitual_Bictia/" class="btn btn-danger"> Volver</a>
 
 
       </div>
