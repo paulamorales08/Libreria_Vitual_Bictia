@@ -36,8 +36,6 @@
         
         //Publica el boton de modificar si el rol del usuario logueado es ADMIN.
         if (isset($_SESSION['rol']) && !empty($_SESSION['rol'])) {
-            echo "No se ha logeado";
-        } else {
             if ($_SESSION['rol'] == 0) {
                 echo "<td class='align-middle'><a href='modificarCat.php?idCategoria=$libroRecorrido->idLibro' class='btn btn-outline-success'>Modificar</a></td> ";
             }

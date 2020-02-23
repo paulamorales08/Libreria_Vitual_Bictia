@@ -1,3 +1,4 @@
+<br>
 <section class="contenedor">
     <div class="imagenLibro">
         <?php

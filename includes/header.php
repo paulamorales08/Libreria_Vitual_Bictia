@@ -37,20 +37,26 @@ $categorias = $categoria->obtenerCategorias();
       </li>
 
       <!-- Fin Categorias -->
-      <li class="nav-item">
-        <a class="nav-link" href="#">Autores</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          ADMINISTRADOR
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class='dropdown-item' href='<?= ROOT ?>/categorias/principal.php'>Incluir Categorías</a>
-            <a class='dropdown-item' href='<?= ROOT ?>/libros/principalAutor.php'>Incluir Autores</a>
-            <a class='dropdown-item' href='<?= ROOT ?>/libros'>Incluir Libros</a>
-            <a class='dropdown-item' href='<?= ROOT ?>/moduloImagenes/'>Incluir Imágenes</a>
-        </div>
-      </li>
+
+          <?php
+          if (isset($_SESSION['rol']) && ($_SESSION['rol'])==0){?>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              ADMINISTRADOR
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class='dropdown-item' href='<?= ROOT ?>/categorias/principal.php'>Incluir Categorías</a>
+                <a class='dropdown-item' href='<?= ROOT ?>/libros/principalAutor.php'>Incluir Autores</a>
+                <a class='dropdown-item' href='<?= ROOT ?>/libros'>Incluir Libros</a>
+                <a class='dropdown-item' href='<?= ROOT ?>/moduloImagenes/'>Incluir Imágenes</a>
+            </div>
+          </li>
+          
+        <?php
+        }
+        ?>
+
+
     </ul>
     <form class="form-inline">
       <input class="form-control mr-sm-1" type="search" placeholder="Buscar Libro" aria-label="Search">

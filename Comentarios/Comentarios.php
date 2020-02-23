@@ -74,7 +74,6 @@ class Comentario
     function eliminarComentario($idComentario){
         $sql="DELETE FROM comentarios WHERE idComentario=$idComentario";
         return mysqli_query($this->conn,$sql);
-        echo "Se eliminò";
     }
     
     function todosComentariosLibro($idLibro){

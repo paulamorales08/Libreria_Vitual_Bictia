@@ -13,7 +13,6 @@
 </head>
 
 <body>
-    <h2 class="text-center font-weight-light">Modificar Comentarios</h2>
     <?php
     include('Comentarios.php');
     $comentario1 = new Comentario();
@@ -21,12 +20,20 @@
     if (isset($_POST) && !empty($_POST)) {
         $modificar = $comentario1->modificarComentario($_POST);
         if ($modificar) {
-            echo "Registro exitoso";
+            $idLibro=$dc->idLibro;
+            header("location:../libros/detalleLibro.php?idLibro=$idLibro");
         } else {
             echo "Fallo";
         }
     }
     ?>
+
+
+<div class="container w-75 p-3 shadow p-3 mb-5 bg-white rounded text-dark">
+        <div class="form-group pt-4">
+            <h2 class="text-center font-weight-light">Modificar Comentario</h2>
+        </div>
+
     <form method="POST" class="m3">
     <div class="form-group">
         <div class="form_group">
@@ -78,7 +85,7 @@
         </div>
     </form>
  
-
+</div>
 
 </body>
 
