@@ -88,6 +88,17 @@ $todasCategorias = $categoria->obtenerCategorias();
                     }
                     echo "<td  class='text-justify text-center '> $cate->descripcion </td>";
                     echo "<td class='align-middle'><a href='modificarCat.php?idCategoria=$cate->idCategoria' class='btn btn-outline-success'>Modificar</a></td> ";
+                    /*
+                    session_start();
+
+                    if (isset($_SESSION) && !empty($_SESSION)) {
+                        echo "No se ha logeado";
+                    } else {
+                        if ($_SESSION['rol'] == 1) {
+                            echo "<td class='align-middle'><a href='modificarCat.php?idCategoria=$cate->idCategoria' class='btn btn-outline-success'>Modificar</a></td> ";
+                        }
+                    }
+                  */
                     echo "</tbody>";
                 }
                 ?>

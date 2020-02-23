@@ -38,9 +38,9 @@
 
 <div class="container text-center p-4 shadow p-3 mb-5 bg-white rounded">
 
-<?php
-echo " <h3 class='font-weight-light pb-2'>Sección: <span class='badge badge-dark'>$nombreCat->nombreCategoria</span></h3>";
-?>
+    <?php
+        echo " <h3 class='font-weight-light pb-2'>Sección: <span class='badge badge-dark'>$nombreCat->nombreCategoria</span></h3>";
+    ?>
 
 <div class="d-flex flex-row bd-highlight mb-3 d-flex justify-content-center d-flex flex-wrap">
     <?php
@@ -75,6 +75,19 @@ echo " <h3 class='font-weight-light pb-2'>Sección: <span class='badge badge-dar
         echo "<li class='list-group-item'>Estado: $libroRecorrido->estado</li>";
         echo "<li class='list-group-item'>idAutor: $libroRecorrido->idAutor</li>";
         echo "<li class='list-group-item'>idEditorial: $libroRecorrido->idEditorial</li>";
+        
+        //Publica el boton de modificar si el rol del usuario logueado es ADMIN.
+        if (isset($_SESSION['rol']) && !empty($_SESSION['rol'])) {
+            echo "No se ha logeado";
+        } else {
+            if ($_SESSION['rol'] == 0) {
+                echo "<td class='align-middle'><a href='modificarCat.php?idCategoria=$libroRecorrido->idLibro' class='btn btn-outline-success'>Modificar</a></td> ";
+            }
+        }
+
+        
+
+
         echo " </ul>
                 </div>";
         echo "</br>";
