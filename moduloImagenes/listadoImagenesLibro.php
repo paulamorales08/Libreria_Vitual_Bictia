@@ -13,7 +13,8 @@ $todasLasImagenes = $imagen->obtenerImagenesActivas($idLibro);
         <?php
         $conteo = 0;
         if($todasLasImagenes->lengths===null){
-                    echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/imagenNoEncontrada.png' alt='Imagen no encontrada' width='300px'/></div>";
+            echo "<div class='carousel-item active' data-interval='1000'>";
+            echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/imagenNoEncontrada.png' alt='Imagen no encontrada' width='300px'/></div>";
         }
         else{
             while ($imagenLibro = mysqli_fetch_object($todasLasImagenes)) {

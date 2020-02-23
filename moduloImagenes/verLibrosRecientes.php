@@ -6,10 +6,11 @@
     $librosRecientes = $libro->obtenerLibrosRecientes();
     ?>
 
+<br>
 <div class="container w-75 p-3 shadow p-3 mb-5 bg-white rounded text-dark">
         <div class="form-group pt-4">
-            <h2 class="text-center font-weight-light">Administrador de Imágenes</h2>
-            <h3 class="text-center font-weight-light texto_verde">Ver Libros Recientes</h3>
+            <h2 class="text-center font-weight-light">Agregar Imágenes</h2>
+            <h3 class="text-center font-weight-light texto_verde">Listado de Libros Recientes</h3>
         </div>
  
       <div class="container">
@@ -19,7 +20,7 @@
                         <th scope="col">Libro</th>
                         <th scope="col">Url</th>
                         <th scope="col">Imágenes</th>
-                        <th scope="col">Modificar</th>
+                        <!-- <th scope="col">Modificar</th> -->
                         <th scope="col">Imágenes</th>
                     </tr>
                 </thead>
@@ -45,7 +46,7 @@
                   echo "<td> $primeraImagenLibro->urlImagen</td>";
                 }
           //echo "<td class='text-justify'> $recorridoLibro->descripcion </td>";
-          echo "<td> <a href='../libros/modificar.php?id=$recorridoLibro->idLibro' class='btn btn-outline-success'>Modificar Libro</a></td>" ;
+          //echo "<td> <a href='../libros/modificar.php?id=$recorridoLibro->idLibro' class='btn btn-outline-success'>Modificar Libro</a></td>" ;
           echo "<td> <a href='?idLibro=$recorridoLibro->idLibro' class='btn btn-outline-success'>Ver Imágenes</a></td>" ;
 
 

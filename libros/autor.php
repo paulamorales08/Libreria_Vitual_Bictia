@@ -20,5 +20,22 @@
             $sql = "SELECT * FROM autores ORDER BY nombreAutor";
             return mysqli_query($this->conn, $sql);
         }
+
+        function crearAutor($data){
+            $nombreAutor = $data['nombreAutor'];                    
+            $sql = "INSERT INTO autores 
+                    (nombreAutor) 
+                    VALUES 
+                    ('$nombreAutor')";
+            
+            $res = mysqli_query($this->conn, $sql);
+
+            if ($res) {
+                return $nombreAutor;
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 ?>

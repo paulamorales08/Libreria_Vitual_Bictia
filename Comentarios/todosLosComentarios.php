@@ -1,15 +1,22 @@
 <?php
-include('../includes/links.php');
 include_once('Comentarios.php');
-$simulacionIdUsuario= $_SESSION['idUsuario']; //Para confirmar el funcionamiento del modificar  comentario.
+
+if (isset($_SESSION['idUsuario']) && !empty($_SESSION['idUsuario'])){
+    $usuarioLogueado = 1;
+    $rol = $_SESSION['rol'];
+    $idUsuario = $_SESSION['idUsuario'];
+}
+else{
+    $usuarioLogueado=0;
+    $idUsuario=null;
+}
+
 $comentario1 = new Comentario();
 $totalRegistros=0;
 $conteo=0;
 $valoracionTotal=0;
 $promedioValoracion = 0;
 $promedioRedondeado=0;
-$rol=$_SESSION['rol'];
-echo $rol;
 
 if (isset($_POST) && !empty($_POST)) {
     $insert = $comentario1->crearComentario($_POST);
@@ -60,17 +67,19 @@ if (isset($_GET) && !empty($_GET)) {
                 }
                 
                  echo "<p class='card-text'>$come->comentario</p>";
-                 echo "usuario $come->idUsuario</br>";
-                 echo "rol:$rol </br>";
-                if($simulacionIdUsuario==$come->idUsuario){
-
-                    echo ('El usuario puede modificar');
-               // echo "<a href='../Comentarios/modificar.php?idComentario=$come->idComentario&idLibro=$idLibro' class='card-link'>Modificar</a>";
+                 if($usuarioLogueado ==1){
+                        if($rol==0){
+                            echo "<div><a href='../Comentarios/Eliminar.php?idComentario=$come->idComentario&idLibro=$come->idLibro' class='btn btn-outline-danger'>Eliminar Comentario</a></div>";
+                        }
+                        else{
+                            if($idUsuario==$come->idUsuario){
+                                echo "<div><a href='../Comentarios/modificar.php?idComentario=$come->idComentario' class='btn btn-outline-success'>Modificar Comentario</a> <a href='../Comentarios/Eliminar.php?idComentario=$come->idComentario&idLibro=$come->idLibro' class='btn btn-outline-danger'>Eliminar Comentario</a></div>";
+                            }
+                        }
                 }
-                if($rol==0){
-                    echo ("el usuario puedo eliminar");
-                //echo "<a href='../Comentarios/Eliminar.php?idComentario=$come->idComentario&idLibro=$idLibro' class='card-link'>Eliminar</a>";
-               }
+                
+                
+
                 
             echo "</div>";
             echo "</div>";
@@ -78,20 +87,23 @@ if (isset($_GET) && !empty($_GET)) {
             $conteo++; 
         }
 
-        if ($conteo!=0){
-            $promedioValoracion= $valoracionTotal/$conteo;    
-            echo "Promedio: $promedioValoracion <br>";
-        }
-        $promedioRedondeado = round($promedioValoracion);
-        echo "Promedio Redondeado: ". $promedioRedondeado;
+        // if ($conteo!=0){
+        //     $promedioValoracion= $valoracionTotal/$conteo;    
+        //     echo "Promedio: $promedioValoracion <br>";
+        // }
+        // $promedioRedondeado = round($promedioValoracion);
+        // echo "Promedio Redondeado: ". $promedioRedondeado;
        
         ?>
-         <div class="btn btn-primary btn-sm" onclick="history.back()">Regresar</div>
+
 
 
 
         
     </section>
+<?php
+        if($usuarioLogueado ==1){        
+?>
     <section class="nuevoComentario">
         <div class="titulo">
             <h2>
@@ -102,14 +114,11 @@ if (isset($_GET) && !empty($_GET)) {
             <form method="POST" enctype="multipart/form-data" class="m3">
 
             <div class="form-group">
-                <label for="">id Libro</label>
-                <input name="idLibro" id="idLibro" class="form-control" placeholder="Ingresar libro" type="text" readonly value="<?=$idLibro?>">
+                <input name="idLibro" id="idLibro" class="form-control" placeholder="Ingresar libro" type="hidden" readonly value="<?=$idLibro?>">
             </div>
-                <label for="idUsuario">Usuario</label>
-                <input name="idUsuario" id="idUsuario" class="form-control" placeholder="Ingresar Usuario" type="text" readonly value="<?=$simulacionIdUsuario?>"></br>
+                <input name="idUsuario" id="idUsuario" class="form-control" placeholder="Ingresar Usuario" type="hidden" readonly value="<?=$idUsuario?>"></br>
             <div class="form-group">
-                <label for="">Estado</label>
-                <input type="text" class="form-control" id="estado" name="estado" value="1" readonly>
+                <input type="hidden" class="form-control" id="estado" name="estado" value="1" readonly>
             </div>
             <div class="form-group">
                 <label for="fechaComentario">Fecha</label>
@@ -133,6 +142,10 @@ if (isset($_GET) && !empty($_GET)) {
         </form>
         </div>
     </section>
+
+<?php
+}
+?>
 
 
 
