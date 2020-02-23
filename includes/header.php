@@ -2,7 +2,7 @@
 echo "Este es el encabezado <br>";
 //Sesion
 
-    include("../usuarios/usuarios.php");
+    include_once(PATH . "/usuarios/usuarios.php");
     $usuario = new Usuario();
     session_start();
 
@@ -13,28 +13,28 @@ echo "Este es el encabezado <br>";
 
 
 // CATEGORIAS INICIO
-include('../categorias/Categorias.php');
+include(PATH . '/categorias/Categorias.php');
 
 $categoria = new Categoria();
 $categorias = $categoria->obtenerCategorias();
 
-if (isset($_GET) && !empty($_GET)) {
-  $consulta = $_GET['consulta'];
-  $todasCategorias = $categoria->filtroCategorias($consulta);
+// if (isset($_GET) && !empty($_GET)) {
+//   $consulta = $_GET['consulta'];
+//   $todasCategorias = $categoria->filtroCategorias($consulta);
 
-  while ($catRecorrido = mysqli_fetch_object($todasCategorias)) {
-    echo $catRecorrido->nombreCategoria;
-    echo $catRecorrido->idCategoria;
-    echo $catRecorrido->descripcion;
-    echo "</br> </br>";
-    $todosLibros = $categoria->filtroLibrosCategoria($catRecorrido);
-    while ($libroRecorrido = mysqli_fetch_object($todosLibros)) {
-      echo $libroRecorrido->nombreLibro;
-    }
-  }
-} else {
-  echo "No se encontro";
-}
+//   while ($catRecorrido = mysqli_fetch_object($todasCategorias)) {
+//     echo $catRecorrido->nombreCategoria;
+//     echo $catRecorrido->idCategoria;
+//     echo $catRecorrido->descripcion;
+//     echo "</br> </br>";
+//     $todosLibros = $categoria->filtroLibrosCategoria($catRecorrido);
+//     while ($libroRecorrido = mysqli_fetch_object($todosLibros)) {
+//       echo $libroRecorrido->nombreLibro;
+//     }
+//   }
+// } else {
+//   echo "No se encontro";
+// }
 //FIN CATEGORIAS
 ?>
 
@@ -46,7 +46,7 @@ if (isset($_GET) && !empty($_GET)) {
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<?= ROOT ?>">Principal <span class="sr-only">(current)</span></a>
       </li>
       <!-- Inicio Categorias -->
 
@@ -57,7 +57,7 @@ if (isset($_GET) && !empty($_GET)) {
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <?php
           while ($recorridoTodasCat = mysqli_fetch_object($categorias)) {
-            echo "<a class='dropdown-item' href='../categorias/pruebaindex.php?idCategoria=$recorridoTodasCat->idCategoria'>$recorridoTodasCat->nombreCategoria</a>";
+            echo "<a class='dropdown-item' href='$categoria->root/categorias/librosCategoria.php?idCategoria=$recorridoTodasCat->idCategoria'>$recorridoTodasCat->nombreCategoria</a>";
           }
           
           ?>
@@ -80,10 +80,10 @@ if (isset($_GET) && !empty($_GET)) {
             $Nombre = $_SESSION['Nombre'];
             $Apellido = $_SESSION['Apellido'];
             echo "Bienvenido $Nombre $Apellido";
-            echo "<a href='..//usuarios/logOut.php' class='btn btn-btn'> Cerrar sesión</a>";
+            echo "<a href='$categoria->root/usuarios/logOut.php' class='btn btn-btn'> Cerrar sesión</a>";
           }else{
-            echo "<a href='../usuarios/registroUsuario.php' class='btn btn-btn'>Registrarse</a>";
-            echo "<a href='../usuarios/login.php' class='btn btn-btn'> Iniciar Sesión</a>";
+            echo "<a href='$categoria->root/usuarios/registroUsuario.php' class='btn btn-btn'>Registrarse</a>";
+            echo "<a href='$categoria->root/usuarios/login.php' class='btn btn-btn'> Iniciar Sesión</a>";
           }
       ?>
     </form>

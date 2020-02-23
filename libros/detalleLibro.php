@@ -10,7 +10,7 @@
     <?php
       include_once('../includes/links.php');
     ?>
-    <title>Detalle de Libro</title>
+    <title>Libro en Categorías</title>
 </head>
 
 
