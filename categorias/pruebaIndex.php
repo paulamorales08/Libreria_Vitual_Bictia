@@ -13,6 +13,7 @@ include_once('../includes/header.php');
 include_once('Categorias.php');
 include_once('../moduloImagenes/claseImagen.php');
 
+
 $imagen = new Imagen();
 $categoria = new Categoria();
 
@@ -65,13 +66,12 @@ $nombreCat = $categoria->obtenerCategoria($consultaLibro);
                 echo "<li class='list-group-item'>Estado: $libroRecorrido->estado</li>";
                 echo "<li class='list-group-item'>idAutor: $libroRecorrido->idAutor</li>";
                 echo "<li class='list-group-item'>idEditorial: $libroRecorrido->idEditorial</li>";
+                echo "<a href='../libros/modificar.php?idLibro=$libroRecorrido->idLibro' class='btn btn-outline-success'>Modificar</a>";
                 echo " </ul>
                         </div>";
                 echo "</br>";
                 echo "</div>";
-
-                //$primeraImagenLibro= $todaImagen->obtenerPrimeraImagen($libroRecorrido->idLibro);
-                //echo "<td> <img src='$todaImagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block w-100' alt='$primeraImagenLibro->nombreImagen' width='300px'/></td>";
+                 
             }
             ?>
         </div>

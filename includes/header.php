@@ -73,10 +73,10 @@ $categorias = $categoria->obtenerCategorias();
           ADMINISTRADOR
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class='dropdown-item' href='$categoria->root/categorias/librosCategoria.php?idCategoria=$recorridoTodasCat->idCategoria'>Incluir Categorías</a>
-            <a class='dropdown-item' href='$categoria->root/categorias/librosCategoria.php?idCategoria=$recorridoTodasCat->idCategoria'>Incluir Autores</a>
-            <a class='dropdown-item' href='$categoria->root/categorias/librosCategoria.php?idCategoria=$recorridoTodasCat->idCategoria'>Incluir Libros</a>
-            <a class='dropdown-item' href='$categoria->root/categorias/librosCategoria.php?idCategoria=$recorridoTodasCat->idCategoria'>Incluir Imágenes</a>
+            <a class='dropdown-item' href='<?= ROOT ?>/categorias/principal.php'>Incluir Categorías</a>
+            <a class='dropdown-item' href='<?= ROOT ?>/libros/principalAutor.php'>Incluir Autores</a>
+            <a class='dropdown-item' href='<?= ROOT ?>/libros/agregar.php'>Incluir Libros</a>
+            <a class='dropdown-item' href='<?= ROOT ?>/moduloImagenes/'>Incluir Imágenes</a>
         </div>
       </li>
     </ul>

@@ -60,14 +60,20 @@ class Categoria {
 
     function filtroCategorias($consulta){
         //$sql = "SELECT * FROM categorias WHERE idCategoria = $idCategoria";
-        $sql = "SELECT * FROM categorias WHERE nombreCategoria LIKE '%$consulta%'";
+        $sql = "SELECT * FROM categorias WHERE nombreCategoria LIKE '%$consulta%' AND estado=1";
         return mysqli_query($this->conn, $sql);
     }
 
     function filtroLibrosCategoria($idCategoria){
-        $sql = "SELECT * FROM libros WHERE idCategoria = $idCategoria";
+        $sql = "SELECT * FROM libros WHERE idCategoria = $idCategoria AND estado=1";
         //$sql = "SELECT * FROM categorias WHERE nombreCategoria LIKE '%$consulta%'";
         return mysqli_query($this->conn, $sql);
+    }
+    function librosRecientes(){
+        $sql = "SELECT * FROM libros";
+        //$sql = "SELECT * FROM categorias WHERE nombreCategoria LIKE '%$consulta%'";
+        return mysqli_query($this->conn, $sql);
+
     }
 }
 
