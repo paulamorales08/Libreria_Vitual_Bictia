@@ -45,8 +45,8 @@
                   echo "<td> $primeraImagenLibro->urlImagen</td>";
                 }
           //echo "<td class='text-justify'> $recorridoLibro->descripcion </td>";
-          echo "<td> <a href='../libros/modificar.php?id=$recorridoLibro->idLibro' class='btn btn-outline-success'>Modificar</a></td>" ;
-          echo "<td> <a href='?idLibro=$recorridoLibro->idLibro' class='btn btn-outline-success'>Imágenes</a></td>" ;
+          echo "<td> <a href='../libros/modificar.php?id=$recorridoLibro->idLibro' class='btn btn-outline-success'>Modificar Libro</a></td>" ;
+          echo "<td> <a href='?idLibro=$recorridoLibro->idLibro' class='btn btn-outline-success'>Ver Imágenes</a></td>" ;
 
 
 
