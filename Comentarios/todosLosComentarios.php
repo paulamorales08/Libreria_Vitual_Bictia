@@ -65,21 +65,22 @@ if (isset($_GET) && !empty($_GET)) {
                         echo " <div class='valoracion'><strong>Valoración:</strong> <img src='../includes/imagenes/valoracion_cinco.png' alt='Valoración 5' width='80px'></div></div>";
                         break;
                 }
+
+                echo $idUsuario;
+                echo $rol;
                 
                  echo "<p class='card-text'>$come->comentario</p>";
                  if($usuarioLogueado ==1){
+                        if($idUsuario==$come->idUsuario){
+                            echo "<a href='../Comentarios/modificar.php?idComentario=$come->idComentario' class='btn btn-outline-success'>Modificar Comentario</a> ";
+                        }
                         if($rol==0){
-                            echo "<div><a href='../Comentarios/Eliminar.php?idComentario=$come->idComentario&idLibro=$come->idLibro' class='btn btn-outline-danger'>Eliminar Comentario</a></div>";
+                            echo "<a href='../Comentarios/Eliminar.php?idComentario=$come->idComentario&idLibro=$come->idLibro' class='btn btn-outline-danger'>Eliminar Comentario</a>";
                         }
-                        else{
-                            if($idUsuario==$come->idUsuario){
-                                echo "<div><a href='../Comentarios/modificar.php?idComentario=$come->idComentario' class='btn btn-outline-success'>Modificar Comentario</a> <a href='../Comentarios/Eliminar.php?idComentario=$come->idComentario&idLibro=$come->idLibro' class='btn btn-outline-danger'>Eliminar Comentario</a></div>";
-                            }
-                        }
+
                 }
                 
                 
-
                 
             echo "</div>";
             echo "</div>";
@@ -102,7 +103,10 @@ if (isset($_GET) && !empty($_GET)) {
         
     </section>
 <?php
-        if($usuarioLogueado ==1){        
+        if($usuarioLogueado ==1){            
+        setlocale(LC_TIME, 'es_CO'); # Localiza en español es_Colombia
+        date_default_timezone_set('America/Bogota');
+        $fechaactual = date("d-m-Y");
 ?>
     <section class="nuevoComentario">
         <div class="titulo">
@@ -113,17 +117,10 @@ if (isset($_GET) && !empty($_GET)) {
         <div class="formulario">
             <form method="POST" enctype="multipart/form-data" class="m3">
 
-            <div class="form-group">
                 <input name="idLibro" id="idLibro" class="form-control" placeholder="Ingresar libro" type="hidden" readonly value="<?=$idLibro?>">
-            </div>
                 <input name="idUsuario" id="idUsuario" class="form-control" placeholder="Ingresar Usuario" type="hidden" readonly value="<?=$idUsuario?>"></br>
-            <div class="form-group">
                 <input type="hidden" class="form-control" id="estado" name="estado" value="1" readonly>
-            </div>
-            <div class="form-group">
-                <label for="fechaComentario">Fecha</label>
-                <input name="fechaComentario" id="fechaComentario" class="form-control" placeholder="Ingresar Fecha" type="date" required></br>
-            </div>
+                <input name="fechaComentario" id="fechaComentario" class="form-control" placeholder="Ingresar Fecha" type="hidden" required readonly value="<?= $fechaactual ?>"></br>
             
             <div class="form-group">
             <textarea name="comentario" id="comentario" cols="30" rows="5" class="form-control"></textarea>

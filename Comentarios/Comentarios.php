@@ -60,9 +60,8 @@ class Comentario
         $idLibro = $data['idLibro'];
         $idUsuario = $data['idUsuario'];
         $sql = "UPDATE comentarios SET 
-        fechaComentario='$fechaComentario',comentario='$comentario',
-        valoracion='$valoracion',estado='$estado',idLibro='$idLibro',
-        idUsuario='$idUsuario' WHERE idComentario='$idComentario'";
+        comentario='$comentario',
+        valoracion='$valoracion',idLibro='$idLibro'WHERE idComentario='$idComentario'";
         $update = mysqli_query($this->conn, $sql);
         if ($update) {
             return true;

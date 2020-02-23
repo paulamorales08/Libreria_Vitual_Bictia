@@ -141,4 +141,29 @@ class Libro
         return mysqli_query($this->conn, $sql);
         //return mysqli_fetch_object(mysqli_query($this->conn, $sql));
     }
+    function obtenerCategoria($idCategoria)
+    {
+        $sql = "SELECT * FROM categorias WHERE idCategoria=$idCategoria";
+        //return mysqli_query($this->conn, $sql);
+        return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+    }
+}
+class Autor
+{
+    public $idAutor;
+    public $nombreAutor;
+    public $conn;
+
+    function __construct()
+    {
+        $db = new Databse();
+        $this->conn =  $db->__construct();
+    }
+
+    function obtenerNombreAutor($idAutor)
+    {
+        $sql = "SELECT * FROM autores WHERE idAutor=$idAutor";
+        //return mysqli_query($this->conn, $sql);
+        return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+    }
 }
