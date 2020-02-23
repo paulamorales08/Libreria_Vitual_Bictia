@@ -52,7 +52,7 @@ $categorias = $categoria->obtenerCategorias();
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Clasificacion
+          Categorías
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <?php
@@ -68,12 +68,24 @@ $categorias = $categoria->obtenerCategorias();
       <li class="nav-item">
         <a class="nav-link" href="#">Autores</a>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          ADMINISTRADOR
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class='dropdown-item' href='$categoria->root/categorias/librosCategoria.php?idCategoria=$recorridoTodasCat->idCategoria'>Incluir Categorías</a>
+            <a class='dropdown-item' href='$categoria->root/categorias/librosCategoria.php?idCategoria=$recorridoTodasCat->idCategoria'>Incluir Autores</a>
+            <a class='dropdown-item' href='$categoria->root/categorias/librosCategoria.php?idCategoria=$recorridoTodasCat->idCategoria'>Incluir Libros</a>
+            <a class='dropdown-item' href='$categoria->root/categorias/librosCategoria.php?idCategoria=$recorridoTodasCat->idCategoria'>Incluir Imágenes</a>
+        </div>
+      </li>
     </ul>
     <form class="form-inline">
       <input class="form-control mr-sm-1" type="search" placeholder="Buscar Libro" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
- 
-      
+    </form>
+
+    <div class="datos_sesion">
       <?php
 
           if (isset($_SESSION['idUsuario'])) {
@@ -86,7 +98,10 @@ $categorias = $categoria->obtenerCategorias();
             echo "<a href='$categoria->root/usuarios/login.php' class='btn btn-btn'> Iniciar Sesión</a>";
           }
       ?>
-    </form>
+    </div>
+ 
+      
+
   </div>
 </nav>
 

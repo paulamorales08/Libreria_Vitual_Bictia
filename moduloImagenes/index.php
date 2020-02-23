@@ -10,7 +10,7 @@
     <?php
       include_once('../includes/links.php');
     ?>
-    <title>Administrador de Imágenes</title>
+    <title>Módulo de Imágenes</title>
 </head>
 
 

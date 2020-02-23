@@ -65,7 +65,7 @@
                 }
           //echo "<td class='text-justify'> $recorridoLibro->descripcion </td>";
           echo "<td class='text-justify' style='font-size:.8em'; width='400px'> $recorridoLibro->descripcion </td>" ;
-          echo "<td> <a href='libros/detalleLibro.php?idLibro=$recorridoLibro->idLibro' class='btn-warning'>Detalle</a></td>" ;
+          echo "<td> <a href='libros/detalleLibro.php?idLibro=$recorridoLibro->idLibro' class='btn btn-warning'>Detalle</a></td>" ;
 
 
 
