@@ -111,6 +111,7 @@
                     <th scope="col">Autor</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Modificar</th>
+                    <th scope="col">Imágenes</th>
                     <th scope="col">Eliminar</th>
                 </thead>
 
@@ -138,8 +139,9 @@
 
                         echo "<td scope='row'>$datosCategoria->nombreCategoria</td>";
 
-                        echo "<td scope='row'> <a href='modificar.php?id=$lib->idLibro'>Modificar</a> </td>";
-                        echo "<td scope='row'> <a href='eliminar.php?id=$lib->idLibro'>Eliminar</a> </td>";
+                        echo "<td scope='row'> <a href='modificar.php?id=$lib->idLibro' class='btn btn-outline-success'>Modificar</a> </td>";
+                        echo "<td scope='row'> <a href='../moduloImagenes/index.php?idLibro=$lib->idLibro' class='btn btn-outline-success'>Imágenes</a> </td>";
+                        echo "<td scope='row'> <a href='eliminar.php?id=$lib->idLibro' class='btn btn-outline-success'>Eliminar</a> </td>";
                         echo "</tr>";
                     }
                 ?>
