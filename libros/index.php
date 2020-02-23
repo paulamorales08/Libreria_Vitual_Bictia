@@ -43,7 +43,7 @@
 <br>
 <div class="container w-75 p-3 shadow p-3 mb-5 bg-white rounded text-dark">
   <div class="form-group pt-4">
-      <h2 class="text-center font-weight-light">Registro de Libro</h2>
+      <h2 class="text-center font-weight-light">Agregar Libro</h2>
   </div>
 
 <form  method="POST" class="w-100 p-4">
@@ -118,7 +118,7 @@
             <table class="table">
                 <thead class="thead-dark">
                     <th scope="col">Nombre</th>
-                    <th scope="col">Descripción</th>
+                    <!-- <th scope="col">Descripción</th> -->
                     <th scope="col">Fecha de Pub.</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Estado</th>
@@ -134,7 +134,7 @@
                     while ($lib = mysqli_fetch_object($todosLosLibros)) {
                         echo "<tr>";
                         echo "<td scope='row'>$lib->nombreLibro</td>";
-                        echo "<td scope='row'>$lib->descripcion</td>";
+                        //echo "<td scope='row'>$lib->descripcion</td>";
                         echo "<td scope='row'>$lib->fechaPublicacion</td>";
                         echo "<td scope='row'>$lib->precio</td>";
 
@@ -160,7 +160,7 @@
 
                         echo "<td scope='row'>$datosCategoria->nombreCategoria</td>";
 
-                        echo "<td scope='row'> <a href='modificar.php?id=$lib->idLibro' class='btn btn-outline-success'>Modificar</a> </td>";
+                        echo "<td scope='row'> <a href='modificarLibro.php?id=$lib->idLibro' class='btn btn-outline-success'>Modificar</a> </td>";
                         echo "<td scope='row'> <a href='../moduloImagenes/index.php?idLibro=$lib->idLibro' class='btn btn-outline-success'>Imágenes</a> </td>";
                         echo "<td scope='row'> <a href='eliminar.php?id=$lib->idLibro' class='btn btn-outline-success'>Eliminar</a> </td>";
                         echo "</tr>";

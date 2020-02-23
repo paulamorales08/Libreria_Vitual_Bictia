@@ -66,15 +66,14 @@
             $categoria = $data['idCategoria'];
            
 
-            $sql = "UPDATE Libros SET nombreLibro = '$libro', descripcion = '$descripcion', fechaPublicacion = '$fechaPublicacion', 
-                                      fechaPublicacion = '$fechaPublicacion', precio = '$precio', estado = '$estado', idEditorial = '$editorial',
-                                      idAutor = '$autor', idCategoria = '$categoria'
+            $sql = "UPDATE libros SET nombreLibro = '$libro', descripcion = '$descripcion', precio = '$precio', idAutor ='$autor',
+                    estado = '$estado', idEditorial = '$editorial', idCategoria = '$categoria'
                     WHERE idLibro = '$idLibro' ";
-            mysqli_query($this->conn, $sql);
+            $update = mysqli_query($this->conn, $sql);
 
-            if ($sql) {
+            if ($update) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         }
@@ -107,6 +106,19 @@
             $sql = "SELECT * FROM editoriales WHERE idEditorial = $idEditorial";
             return mysqli_fetch_object(mysqli_query($this->conn, $sql));
         }
+        function updateEditorial($data){
+            $idEditorial = $data['idEditorial'];
+            $editorial = $data['editorial'];
+        
+            $sql = "UPDATE editoriales SET nombreEditorial = '$editorial' WHERE idEditorial = '$idEditorial' ";
+            mysqli_query($this->conn, $sql);
+
+            if ($sql) {
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 
     //Autores
@@ -134,6 +146,20 @@
         function getNombreAutor($idAutor){
             $sql = "SELECT * FROM autores WHERE idAutor = $idAutor";
             return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+        }
+        function updateAutor($data){
+            $idAutor = $data['idAutor'];
+            var_dump($idAutor);
+            $autor = $data['autor'];
+        
+            $sql = "UPDATE autores SET nombreAutor = '$autor' WHERE idAutor = '$idAutor' ";
+            mysqli_query($this->conn, $sql);
+
+            if ($sql) {
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 

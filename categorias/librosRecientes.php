@@ -22,7 +22,7 @@
             echo "No hay imagen";   
           }
           else{    
-              echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='card-img-top' alt='$primeraImagenLibro->nombreImagen'/>";
+              echo "<a href='../libros/detalleLibro.php?idLibro=$idLibro'><img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='card-img-top' alt='$primeraImagenLibro->nombreImagen'/><a/>";
           }
 
         echo "<div class='card-body'>";
@@ -30,15 +30,15 @@
         echo "<p class='card-text text-justify'>$libroRecorrido->descripcion</p>";
         echo "</div>";
         echo "<ul class='list-group list-group-flush'>";
-        echo "<li class='list-group-item'>$libroRecorrido->fechaPublicacion</li>";
+        //echo "<li class='list-group-item'>$libroRecorrido->fechaPublicacion</li>";
         echo "<li class='list-group-item'>Precio: $$libroRecorrido->precio</li>";
-        echo "<li class='list-group-item'>idAutor: $libroRecorrido->idAutor</li>";
-        echo "<li class='list-group-item'>idEditorial: $libroRecorrido->idEditorial</li>";
+        //echo "<li class='list-group-item'>idAutor: $libroRecorrido->idAutor</li>";
+        //echo "<li class='list-group-item'>idEditorial: $libroRecorrido->idEditorial</li>";
         
         //Publica el boton de modificar si el rol del usuario logueado es ADMIN.
-        if (isset($_SESSION['rol']) && !empty($_SESSION['rol'])) {
-            if ($_SESSION['rol'] == 0) {
-                echo "<td class='align-middle'><a href='modificarCat.php?idCategoria=$libroRecorrido->idLibro' class='btn btn-outline-success'>Modificar</a></td> ";
+        if (isset($_SESSION['rol'])){
+            if($_SESSION['rol']==0){
+                echo "<td class='align-middle'><a href='../libros/modificarLibro.php?id=$libroRecorrido->idLibro' class='btn btn-outline-success'>Modificar</a></td> ";
             }
         }
         echo " </ul>

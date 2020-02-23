@@ -35,9 +35,9 @@
         echo "<li class='list-group-item'>idEditorial: $libroRecorrido->idEditorial</li>";
         
         //Publica el boton de modificar si el rol del usuario logueado es ADMIN.
-        if (isset($_SESSION['rol']) && !empty($_SESSION['rol'])) {
-            if ($_SESSION['rol'] == 0) {
-                echo "<td class='align-middle'><a href='modificarCat.php?idCategoria=$libroRecorrido->idLibro' class='btn btn-outline-success'>Modificar</a></td> ";
+        if (isset($_SESSION['rol'])){
+            if($_SESSION['rol']==0){
+                echo "<td class='align-middle'><a href='../libros/modificarLibro.php?id=$libroRecorrido->idLibro' class='btn btn-outline-success'>Modificar</a></td> ";
             }
         }
         echo " </ul>

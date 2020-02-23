@@ -47,6 +47,7 @@ $categorias = $categoria->obtenerCategorias();
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class='dropdown-item' href='<?= ROOT ?>/categorias/principal.php'>Incluir Categorías</a>
                 <a class='dropdown-item' href='<?= ROOT ?>/libros/principalAutor.php'>Incluir Autores</a>
+                <a class='dropdown-item' href='<?= ROOT ?>/libros/principalEditorial.php'>Incluir Editorial</a>
                 <a class='dropdown-item' href='<?= ROOT ?>/libros'>Incluir Libros</a>
                 <a class='dropdown-item' href='<?= ROOT ?>/moduloImagenes/'>Incluir Imágenes</a>
             </div>

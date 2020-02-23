@@ -137,7 +137,7 @@ class Libro
     function obtenerLibrosRecientes()
     //Esta función es usada por el administrador y devuelve los 5 libros recientes
     {
-        $sql = "SELECT * FROM libros ORDER BY idLibro DESC LIMIT 5";
+        $sql = "SELECT * FROM libros ORDER BY idLibro DESC LIMIT 10";
         return mysqli_query($this->conn, $sql);
         //return mysqli_fetch_object(mysqli_query($this->conn, $sql));
     }
