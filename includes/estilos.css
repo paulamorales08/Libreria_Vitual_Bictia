@@ -137,3 +137,9 @@
 .descripcion{
     font-size: .7em;
 }
+.datos_sesion {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: .9em;
+}
