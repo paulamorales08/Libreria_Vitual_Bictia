@@ -28,7 +28,7 @@ if (!empty($_POST)) {
         $_SESSION['Nombre'] = $row['nombres'];
         $_SESSION['Apellido'] = $row['apellidos'];
 
-        header("location: http://localhost/Libreria_Vitual_Bictia/moduloImagenes/index.php");
+        header("location: http://localhost/Libreria_Vitual_Bictia");
     } else {
         $error = "Usuario o Password incorrectos. Por favor intente de nuevo";
     }
