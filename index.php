@@ -19,61 +19,63 @@ include_once('./Conn/Database.php');
   include_once('./includes/header.php');
   ?>
 
-  <?php
-  include('./moduloImagenes/claseImagen.php');
-  $imagen = new Imagen();
-  $libro = new Libro();
-  $todasLasImagenes = $imagen->obtenerImagenesRecientes();
-  $librosRecientes = $libro->obtenerLibrosRecientes();
-  ?>
 
-  <div class="container w-75 p-3 shadow p-3 mb-5 bg-white rounded text-dark">
-    <div class="form-group pt-4">
-      <h3 class="text-center font-weight-light texto_verde">Ver Libros Recientes</h3>
-    </div>
 
-    <div class="container">
-      <table class="table mt-4 tablaImagenes">
-        <thead class="thead-dark text-center">
-          <tr>
-            <th scope="col">Libro</th>
-            <th scope="col">Imágenes</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Imágenes</th>
-          </tr>
-        </thead>
+<div class="container text-center p-4 shadow p-3 mb-5 bg-white rounded">
 
-        <?php
-        while ($recorridoLibro = mysqli_fetch_object($librosRecientes)) {
-          echo "<tbody>";
-          echo "<tr class='text-center'>";
-          echo "<td> $recorridoLibro->nombreLibro </td>";
-          //Consulta a la tabla de Imagenes
-          $idLibro = $recorridoLibro->idLibro;
-          $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
-          //var_dump($primeraImagenLibro);  
+<?php
+    include_once('categorias/Categorias.php');
+    include_once('moduloImagenes/claseImagen.php');
+    $imagen = new Imagen();
+    $categoria = new Categoria();
+    $todosLibrosSinCategoria = $categoria->librosRecientesActivos();
+    echo " <h3 class='font-weight-light pb-2'><span class='badge badge-dark'>Libros más recientes</span></h3>";
+?>
 
-          //Verificamos si la consulta obtuvo resultados.
-          if ($primeraImagenLibro == null) {
-            //Si la consulta no trae registros publicamos una imagen genérica.
-            echo "<td> <img src='$imagen->root/moduloImagenes/imagenesLibros/imagenNoEncontrada.png' class='d-block' alt='Imagen no encontrada' width='100px'/></td>";
-            //echo "<td> Sin imagen</td>";
-          } else {
-            echo "<td> <img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='d-block' alt='$primeraImagenLibro->nombreImagen' width='100px'/></td>";
-            //echo "<td> $primeraImagenLibro->urlImagen</td>";
+<div class="d-flex flex-row bd-highlight mb-3 d-flex justify-content-center d-flex flex-wrap">
+    <?php
+
+    while ($libroRecorrido = mysqli_fetch_object($todosLibrosSinCategoria)) {
+
+        echo "<div class='p-2 bd-highlight'>";
+        echo "<div class='card text-center shadow-sm p-3 mb-5 bg-white rounded' style='width: 18rem;'>";
+
+        $idLibro = $libroRecorrido->idLibro;
+       
+        $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
+           
+          if($primeraImagenLibro==null){
+            echo "No hay imagen";   
           }
-          //echo "<td class='text-justify'> $recorridoLibro->descripcion </td>";
-          echo "<td class='text-justify' style='font-size:.8em'; width='400px'> $recorridoLibro->descripcion </td>" ;
-          echo "<td> <a href='libros/detalleLibro.php?idLibro=$recorridoLibro->idLibro' class='btn btn-warning'>Detalle</a></td>" ;
+          else{    
+              echo "<a href='libros/detalleLibro.php?idLibro=$idLibro'><img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='card-img-top' alt='$primeraImagenLibro->nombreImagen'/></a>";
+          }
 
-
-
-          echo "</tr>";
-          echo "</tbody>";
-        } ?>
-      </table>
+        echo "<div class='card-body'>";
+        echo "<h5 class='card-title'>$libroRecorrido->nombreLibro</h5>";
+        echo "<div class='descripcion_libro'><p class='card-text text-justify'>$libroRecorrido->descripcion</p></div>";
+        echo "</div>";
+        echo "<ul class='list-group list-group-flush'>";
+        echo "<li class='list-group-item'>$libroRecorrido->fechaPublicacion</li>";
+        echo "<li class='list-group-item'>Precio: $$libroRecorrido->precio</li>";
+        //echo "<li class='list-group-item'>Estado: $libroRecorrido->estado</li>";
+        //echo "<li class='list-group-item'>idAutor: $libroRecorrido->idAutor</li>";
+        //echo "<li class='list-group-item'>idEditorial: $libroRecorrido->idEditorial</li>";
+        
+        //Publica el boton de modificar si el rol del usuario logueado es ADMIN.
+        if (isset($_SESSION['rol'])){
+            if($_SESSION['rol']==0){
+                echo "<td class='align-middle'><a href='libros/modificarLibro.php?id=$libroRecorrido->idLibro' class='btn btn-outline-success'>Modificar</a></td> ";
+            }
+        }
+        echo " </ul>
+                </div>";
+        echo "</br>";
+        echo "</div>";
+    }
+    ?>
     </div>
-  </div>
+    </div>
 
   <?php
   include_once('./includes/footer.php');

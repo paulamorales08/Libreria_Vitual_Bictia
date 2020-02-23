@@ -75,6 +75,12 @@ class Categoria {
         return mysqli_query($this->conn, $sql);
 
     }
+    function librosRecientesActivos(){
+        $sql = "SELECT * FROM libros WHERE estado=1";
+        //$sql = "SELECT * FROM categorias WHERE nombreCategoria LIKE '%$consulta%'";
+        return mysqli_query($this->conn, $sql);
+
+    }
 }
 
 ?>

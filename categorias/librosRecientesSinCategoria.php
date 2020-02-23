@@ -20,12 +20,12 @@
             echo "No hay imagen";   
           }
           else{    
-              echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='card-img-top' alt='$primeraImagenLibro->nombreImagen'/>";
+              echo "<a href='../libros/detalleLibro.php?idLibro=$idLibro'><img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='card-img-top' alt='$primeraImagenLibro->nombreImagen'/></a>";
           }
 
         echo "<div class='card-body'>";
         echo "<h5 class='card-title'>$libroRecorrido->nombreLibro</h5>";
-        echo "<p class='card-text text-justify'>$libroRecorrido->descripcion</p>";
+        echo "<div class='descripcion_libro'><p class='card-text text-justify'>$libroRecorrido->descripcion</p></div>";
         echo "</div>";
         echo "<ul class='list-group list-group-flush'>";
         echo "<li class='list-group-item'>$libroRecorrido->fechaPublicacion</li>";
