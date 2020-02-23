@@ -10,7 +10,7 @@
     <?php
       include_once('../includes/links.php');
     ?>
-    <title>Principal Categorías</title>
+    <title>Administrador de Categorías</title>
 </head>
 
 
@@ -46,6 +46,7 @@ $todasCategorias = $categoria->obtenerCategorias();
 
 ?>
 
+<br>
 <div class="container w-75 p-3 shadow p-3 mb-5 bg-white rounded text-dark">
         <div class="form-group pt-4">
             <h2 class="text-center font-weight-light">Administrador Categorias</h2>
@@ -97,7 +98,7 @@ $todasCategorias = $categoria->obtenerCategorias();
                         echo "<td> Inactivo </td>";
                     }
                     echo "<td  class='text-justify text-center '> $cate->descripcion </td>";
-                    echo "<td class='align-middle'><a href='modificarCat.php?idCategoria=$cate->idCategoria' class='btn btn-outline-success'>Modificar</a></td> ";
+                    echo "<td class='align-middle'><a href='modificarCategoria.php?idCategoria=$cate->idCategoria' class='btn btn-outline-success'>Modificar</a></td> ";
                     echo "</tbody>";
                 }
                 ?>

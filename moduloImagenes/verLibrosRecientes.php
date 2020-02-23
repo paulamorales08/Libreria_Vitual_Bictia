@@ -6,6 +6,7 @@
     $librosRecientes = $libro->obtenerLibrosRecientes();
     ?>
 
+<br>
 <div class="container w-75 p-3 shadow p-3 mb-5 bg-white rounded text-dark">
         <div class="form-group pt-4">
             <h2 class="text-center font-weight-light">Administrador de Imágenes</h2>

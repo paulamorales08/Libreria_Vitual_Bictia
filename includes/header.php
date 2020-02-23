@@ -1,41 +1,13 @@
 <?php
-echo "Este es el encabezado <br>";
-//Sesion
-
     include_once(PATH . "/usuarios/usuarios.php");
     $usuario = new Usuario();
     session_start();
-
-    /* $Nombre = $_SESSION['Nombre'];
-    $Apellido = $_SESSION['Apellido']; */
-
-    /* echo "Bienvenido $Nombre $Apellido"; */
-
 
 // CATEGORIAS INICIO
 include(PATH . '/categorias/Categorias.php');
 
 $categoria = new Categoria();
 $categorias = $categoria->obtenerCategorias();
-
-// if (isset($_GET) && !empty($_GET)) {
-//   $consulta = $_GET['consulta'];
-//   $todasCategorias = $categoria->filtroCategorias($consulta);
-
-//   while ($catRecorrido = mysqli_fetch_object($todasCategorias)) {
-//     echo $catRecorrido->nombreCategoria;
-//     echo $catRecorrido->idCategoria;
-//     echo $catRecorrido->descripcion;
-//     echo "</br> </br>";
-//     $todosLibros = $categoria->filtroLibrosCategoria($catRecorrido);
-//     while ($libroRecorrido = mysqli_fetch_object($todosLibros)) {
-//       echo $libroRecorrido->nombreLibro;
-//     }
-//   }
-// } else {
-//   echo "No se encontro";
-// }
-//FIN CATEGORIAS
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -75,7 +47,7 @@ $categorias = $categoria->obtenerCategorias();
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class='dropdown-item' href='<?= ROOT ?>/categorias/principal.php'>Incluir Categorías</a>
             <a class='dropdown-item' href='<?= ROOT ?>/libros/principalAutor.php'>Incluir Autores</a>
-            <a class='dropdown-item' href='<?= ROOT ?>/libros/agregar.php'>Incluir Libros</a>
+            <a class='dropdown-item' href='<?= ROOT ?>/libros'>Incluir Libros</a>
             <a class='dropdown-item' href='<?= ROOT ?>/moduloImagenes/'>Incluir Imágenes</a>
         </div>
       </li>

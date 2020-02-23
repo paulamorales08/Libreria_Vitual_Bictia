@@ -1,4 +1,25 @@
 <?php
+    include_once('../Conn/Database.php');
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <?php
+      include_once('../includes/links.php');
+    ?>
+    <title>Administrador de Libros</title>
+</head>
+
+
+<body>
+    <?php
+      include_once('../includes/header.php');
+    ?>
+
+
+<?php
     include('libros.php');
     $libro = new Libros();
     $categoria = new Categorias();
@@ -19,22 +40,15 @@
     $todasLasCategorias = $categoria->getAllCategorias();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Libreria</title>
-</head>
-<body>
-
-<h1>Agregar Nuevo Libro</h1>
+<br>
+<div class="container w-75 p-3 shadow p-3 mb-5 bg-white rounded text-dark">
+  <div class="form-group pt-4">
+      <h2 class="text-center font-weight-light">Registro de Libro</h2>
+  </div>
 
 <form  method="POST" class="w-100 p-4">
         <div class="form-group">
-            <label for="libro">Libro</label>
+            <label for="libro">Nombre del Libro</label>
             <input name='libro' id="libro" type="text" placeholder="Ingresa el Libro" require class="form-control">
         </div>
         <div class="form-group">
@@ -97,6 +111,7 @@
         </div>
         <br>
         <button class="btn btn-success">Registrar Libro</button>
+        <a class="btn btn-outline-secondary" href="index.php" role="button">Regresar</a>
         <br><br>
 
         <div>
@@ -104,7 +119,7 @@
                 <thead class="thead-dark">
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripción</th>
-                    <th scope="col">Fecha de Publicación</th>
+                    <th scope="col">Fecha de Pub.</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Editorial</th>
@@ -122,7 +137,13 @@
                         echo "<td scope='row'>$lib->descripcion</td>";
                         echo "<td scope='row'>$lib->fechaPublicacion</td>";
                         echo "<td scope='row'>$lib->precio</td>";
-                        echo "<td scope='row'>$lib->estado</td>";
+
+                        if($lib->estado==1){
+                            echo "<td scope='row'>Activo</td>";
+                        }
+                        else{
+                            echo "<td scope='row'>Inactivo</td>";
+                        }
 
                         $edit = $lib->idEditorial;
                         $datosEditorial = $editorial->getEditorial($edit);
@@ -148,5 +169,11 @@
             </table>
         </div>
     </form>
+    </div>
+
+<?php
+  include_once('../includes/footer.php');
+?>
+
 </body>
 </html>

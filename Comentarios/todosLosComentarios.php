@@ -1,14 +1,22 @@
 <?php
 include('../includes/links.php');
 include_once('Comentarios.php');
-$simulacionIdUsuario= $_SESSION['idUsuario']; //Para confirmar el funcionamiento del modificar  comentario.
+
+if (isset($_SESSION['idUsuario']) && !empty($_SESSION['idUsuario'])){
+    echo "La variable existe";
+}
+else{
+    echo "la variable sesion no existe";
+    $usuarioLogueado=1;
+    $rol=1;
+}
+
 $comentario1 = new Comentario();
 $totalRegistros=0;
 $conteo=0;
 $valoracionTotal=0;
 $promedioValoracion = 0;
 $promedioRedondeado=0;
-$rol=$_SESSION['rol'];
 echo $rol;
 
 if (isset($_POST) && !empty($_POST)) {
@@ -65,11 +73,9 @@ if (isset($_GET) && !empty($_GET)) {
                 if($simulacionIdUsuario==$come->idUsuario){
 
                     echo ('El usuario puede modificar');
-               // echo "<a href='../Comentarios/modificar.php?idComentario=$come->idComentario&idLibro=$idLibro' class='card-link'>Modificar</a>";
                 }
                 if($rol==0){
                     echo ("el usuario puedo eliminar");
-                //echo "<a href='../Comentarios/Eliminar.php?idComentario=$come->idComentario&idLibro=$idLibro' class='card-link'>Eliminar</a>";
                }
                 
             echo "</div>";
