@@ -65,9 +65,6 @@ if (isset($_GET) && !empty($_GET)) {
                         echo " <div class='valoracion'><strong>Valoración:</strong> <img src='../includes/imagenes/valoracion_cinco.png' alt='Valoración 5' width='80px'></div></div>";
                         break;
                 }
-
-                echo $idUsuario;
-                echo $rol;
                 
                  echo "<p class='card-text'>$come->comentario</p>";
                  if($usuarioLogueado ==1){
