@@ -77,8 +77,6 @@ if (isset($_GET) && !empty($_GET)) {
 
                 }
                 
-                
-                
             echo "</div>";
             echo "</div>";
             $valoracionTotal+=$come->valoracion;
