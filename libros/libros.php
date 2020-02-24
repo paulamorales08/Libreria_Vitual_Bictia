@@ -78,6 +78,12 @@
             }
         }
 
+        function buscarLibro($texto){
+            
+            $sql = "SELECT * FROM libros WHERE nombreLibro LIKE '%$texto%'";
+            return mysqli_query($this->conn, $sql);
+        }
+
     }
 
     //Editoriales
