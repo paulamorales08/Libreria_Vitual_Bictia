@@ -65,11 +65,11 @@ include_once('../Conn/Database.php');
         //echo "<li class='list-group-item'>idEditorial: $libroRecorrido->idEditorial</li>";
         
         //Publica el boton de modificar si el rol del usuario logueado es ADMIN.
-        /* if (isset($_SESSION['rol'])){
+        if (isset($_SESSION['rol'])){
             if($_SESSION['rol']==0){
                 echo "<td class='align-middle'><a href='libros/modificarLibro.php?id=$resultadoRecorrido->idLibro' class='btn btn-outline-success'>Modificar</a></td> ";
             }
-        } */
+        }
         echo " </ul>
                 </div>";
         echo "</br>";
