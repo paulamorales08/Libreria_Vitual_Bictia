@@ -79,4 +79,16 @@ class Comentario
         $sql = "SELECT * FROM comentarios WHERE idLibro=$idLibro AND estado=1 ORDER BY idComentario DESC"; //Ordena por el más reciente de primero.
         return mysqli_query($this->conn, $sql);
     }
+    function valoracionTodosComentarios($idLibro){
+        $sql = "SELECT AVG(valoracion) as totalValoracion FROM comentarios WHERE idLibro=$idLibro AND estado=1";
+        return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+
+
+        if ($total) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 }

@@ -10,7 +10,7 @@ include_once('./Conn/Database.php');
   <link rel="stylesheet" href="includes/estilos.css?ver19">
   <link rel="stylesheet" href="includes/fontawesome/css/all.css">
   <link rel="shortcut icon" href="includes/favicon/favicon.ico" />
-  <title>Principal Temporal</title>
+  <title>Librería Bictia</title>
 </head>
 
 
@@ -56,8 +56,12 @@ include_once('./Conn/Database.php');
         echo "<div class='descripcion_libro'><p class='card-text text-justify'>$libroRecorrido->descripcion</p></div>";
         echo "</div>";
         echo "<ul class='list-group list-group-flush'>";
-        echo "<li class='list-group-item'>$libroRecorrido->fechaPublicacion</li>";
-        echo "<li class='list-group-item'>Precio: $$libroRecorrido->precio</li>";
+        //echo "<li class='list-group-item'>$libroRecorrido->fechaPublicacion</li>";
+          $fechaPublicacion = $libroRecorrido->fechaPublicacion;
+          $date = new DateTime($libroRecorrido->fechaPublicacion);
+          echo "<div class='fechaPublicacion'>Publicación: ".$date->format('Y')."</div>";
+          //echo "<li class='list-group-item'>$libroRecorrido->fechaPublicacion</li>";
+        echo "<div class='precioLibro'><li class='list-group-item'>$$libroRecorrido->precio</li></div>";
         //echo "<li class='list-group-item'>Estado: $libroRecorrido->estado</li>";
         //echo "<li class='list-group-item'>idAutor: $libroRecorrido->idAutor</li>";
         //echo "<li class='list-group-item'>idEditorial: $libroRecorrido->idEditorial</li>";

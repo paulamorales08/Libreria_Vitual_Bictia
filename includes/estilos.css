@@ -22,11 +22,18 @@
 .footer{
     border-top: 1px solid grey;
     background-color: lightgray;
+}
+.footer .footer_int{
+    margin: auto;
+    max-width: 1200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
     color: grey;
+}
+.footer .footer_int .der{
+    min-width: 400px;
 }
 .contenedor{
     display: flex;
@@ -86,6 +93,14 @@
     font-size: 2em;
     color: red;
     text-align: right;
+}
+.card-title {
+    margin-bottom: .75rem;
+    min-height: 50px;
+}
+.precioLibro{
+    font-size: 1.6em;
+    color: red;
 }
 .comentarios{
     background-color: rgba(0, 0, 0, 0.03);
@@ -152,4 +167,24 @@
     overflow: hidden;
     line-height: 1;
     font-size: .7em;
+}
+.fechaPublicacion{
+    font-size: .8em;
+}
+.fixed-top {
+    border-bottom: 1px solid orange;
+}
+
+@media only screen and (max-width: 1200px) {
+    .footer .footer_int{
+        flex-direction: column;
+    }
+    .footer .footer_int .izq {
+        text-align: center;
+    }
+    .footer .footer_int .der {
+        min-width: 100%;
+        text-align: center;
+        padding: 20px;
+    }
 }
