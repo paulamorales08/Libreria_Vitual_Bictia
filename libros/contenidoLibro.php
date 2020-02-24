@@ -40,14 +40,36 @@
         <div class="descripcion">
         <?= $datosDelLibro->descripcion ?>
         </div>
-        <div class="valoracion">
-            <?php
-                echo "Valoración Total";
-            ?>
 
-        </div>
+        <?php
+            include_once('../Comentarios/Comentarios.php');
+            $comentario1 = new Comentario();
+            $valores = $comentario1-> valoracionTodosComentarios($idLibro);  
+            $valores->totalValoracion;
+            $valoracionTotal = round($valores->totalValoracion);
+            //echo $valoracionTotal;
 
-        <div class="valoracion"> <img src="../includes/imagenes/valoracion_cuatro.png" alt="Valoración"></div>
+            switch ($valoracionTotal) {
+                case 0:
+                    echo " <div class='valoracion'><img src='../includes/imagenes/valoracion_cero.png' alt='Valoración 0'></div>";
+                    break;
+                case 1:
+                    echo " <div class='valoracion'><img src='../includes/imagenes/valoracion_uno.png' alt='Valoración 1'></div>";
+                    break;
+                case 2:
+                    echo " <div class='valoracion'><img src='../includes/imagenes/valoracion_dos.png' alt='Valoración 2'></div>";
+                    break;
+                case 3:
+                    echo " <div class='valoracion'><img src='../includes/imagenes/valoracion_tres.png' alt='Valoración 3'></div>";
+                    break;
+                case 4:
+                    echo " <div class='valoracion'><img src='../includes/imagenes/valoracion_cuatro.png' alt='Valoración 4'></div>";
+                    break;
+                case 5:
+                    echo " <div class='valoracion'><img src='../includes/imagenes/valoracion_cinco.png' alt='Valoración 5'></div>";
+                    break;
+            }
+        ?>
         <div class="precio">$ <?= $datosDelLibro->precio ?></div>
 
 
