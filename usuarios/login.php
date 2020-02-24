@@ -5,7 +5,7 @@ $Holi = new Databse();
 session_start();
 
 if (isset($_SESSION["id_usuario"])) {
-    header("Location: http://localhost/Libreria_Vitual_Bictia/");
+    header("Location: http://localhost:8080/Libreria_Vitual_Bictia/");
 }
 
 if (!empty($_POST)) {
@@ -28,7 +28,7 @@ if (!empty($_POST)) {
         $_SESSION['Nombre'] = $row['nombres'];
         $_SESSION['Apellido'] = $row['apellidos'];
 
-        header("location: http://localhost/Libreria_Vitual_Bictia");
+        header("location: http://localhost:8080/Libreria_Vitual_Bictia");
     } else {
         $error = "Usuario o Password incorrectos. Por favor intente de nuevo";
     }

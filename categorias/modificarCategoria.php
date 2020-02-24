@@ -29,7 +29,7 @@
     if (isset($_POST) && !empty($_POST)) {
         $modificar = $categoria->modificarCategoria($_POST);
         if ($modificar) {
-            header('location:principal.php');
+            //header('location:principal.php');
         } else {
             echo "Error al modificar";
         }

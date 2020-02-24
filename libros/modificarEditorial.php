@@ -28,7 +28,7 @@
         var_dump($modificar);
         if ($modificar) {
             echo "Modificación exitosa";
-            header('location:principalEditorial.php');
+            //header('location:principalEditorial.php');
         }else{
             echo "Error al modificar";
         }
@@ -53,6 +53,7 @@
         </div>
         <br>
         <button class="btn btn-primary">Modificar Editorial</button>
+        <a href='principalEditorial.php' class="btn btn-outline-secondary">Volver </a>
         <br><br>
     </form>
 
