@@ -5,7 +5,7 @@
         Full Stack - Bictia, 24 Febrero 2020.
     </div>    
     <div class="der">
-        Integrantes: <br>
+        <strong>Integrantes: </strong><br>
         Andrés García <br>
         Bryan Piñeros <br>
         Julián Rivera<br>

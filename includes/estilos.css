@@ -94,6 +94,14 @@
     color: red;
     text-align: right;
 }
+.card-title {
+    margin-bottom: .75rem;
+    min-height: 50px;
+}
+.precioLibro{
+    font-size: 1.6em;
+    color: red;
+}
 .comentarios{
     background-color: rgba(0, 0, 0, 0.03);
     box-sizing: border-box;
@@ -159,4 +167,7 @@
     overflow: hidden;
     line-height: 1;
     font-size: .7em;
+}
+.fechaPublicacion{
+    font-size: .8em;
 }

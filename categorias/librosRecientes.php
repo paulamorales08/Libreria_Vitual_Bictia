@@ -31,7 +31,10 @@
         echo "</div>";
         echo "<ul class='list-group list-group-flush'>";
         //echo "<li class='list-group-item'>$libroRecorrido->fechaPublicacion</li>";
-        echo "<li class='list-group-item'>Precio: $$libroRecorrido->precio</li>";
+        $fechaPublicacion = $libroRecorrido->fechaPublicacion;
+        $date = new DateTime($libroRecorrido->fechaPublicacion);
+        echo "<div class='fechaPublicacion'>Año Publicación: ".$date->format('Y')."</div>";
+        echo "<div class='precioLibro'><li class='list-group-item'>$$libroRecorrido->precio</li></div>";
         //echo "<li class='list-group-item'>idAutor: $libroRecorrido->idAutor</li>";
         //echo "<li class='list-group-item'>idEditorial: $libroRecorrido->idEditorial</li>";
         
