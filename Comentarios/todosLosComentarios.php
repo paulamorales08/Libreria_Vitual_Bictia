@@ -11,12 +11,13 @@ else{
     $idUsuario=null;
 }
 
-$comentario1 = new Comentario();
-$totalRegistros=0;
-$conteo=0;
-$valoracionTotal=0;
-$promedioValoracion = 0;
-$promedioRedondeado=0;
+    $comentario1 = new Comentario();
+    $totalRegistros=0;
+    $conteo=0;
+    $conteoValor=0;
+    $valoracionTotal=0;
+    $promedioValoracion = 0;
+    $promedioRedondeado=0;
 
 if (isset($_POST) && !empty($_POST)) {
     $insert = $comentario1->crearComentario($_POST);
@@ -31,8 +32,8 @@ if (isset($_GET) && !empty($_GET)) {
     $idLibro=$_GET['idLibro'];
     $todosLosComentarios = $comentario1-> todosComentariosLibro($idLibro);  
 }
-
 ?>
+
     <section class="comentarios">
         <div class="titulo">
             <h2>
@@ -53,7 +54,7 @@ if (isset($_GET) && !empty($_GET)) {
                         echo " <div class='valoracion'><strong>Valoración:</strong> <img src='../includes/imagenes/valoracion_uno.png' alt='Valoración 1' width='80px'></div></div>";
                         break;
                     case 2:
-                        echo " <div class='valoracion'><strong>Valoración:</strong> <img src='../includes/imagenes/valoracion_dos.png' alt='Valoración 3' width='80px'></div></div>";
+                        echo " <div class='valoracion'><strong>Valoración:</strong> <img src='../includes/imagenes/valoracion_dos.png' alt='Valoración 2' width='80px'></div></div>";
                         break;
                     case 3:
                         echo " <div class='valoracion'><strong>Valoración:</strong> <img src='../includes/imagenes/valoracion_tres.png' alt='Valoración 3' width='80px'></div></div>";
@@ -65,9 +66,6 @@ if (isset($_GET) && !empty($_GET)) {
                         echo " <div class='valoracion'><strong>Valoración:</strong> <img src='../includes/imagenes/valoracion_cinco.png' alt='Valoración 5' width='80px'></div></div>";
                         break;
                 }
-
-                echo $idUsuario;
-                echo $rol;
                 
                  echo "<p class='card-text'>$come->comentario</p>";
                  if($usuarioLogueado ==1){
@@ -80,13 +78,12 @@ if (isset($_GET) && !empty($_GET)) {
 
                 }
                 
-                
-                
             echo "</div>";
             echo "</div>";
             $valoracionTotal+=$come->valoracion;
             $conteo++; 
-        }
+        
+    }
 
         // if ($conteo!=0){
         //     $promedioValoracion= $valoracionTotal/$conteo;    

@@ -1,17 +1,23 @@
 <section class="footer">
-    <div class="izq">
+<div class="footer_int">
+<div class="izq">
         Taller Nro. 4. <br>
-        Full Stack - Bictia, Febrero 2020.
+        Desarrollado por el Grupo Nro. 2. <br>
+        Full Stack - Turno AM. <br><br>
+        <a href="http://bictia.com/" target="bictia">
+            <img src='<?= ROOT ?>/includes/imagenes/logo_bictia.png' alt="Logo Bictia" width="100px"><br>
+        </a>
+        Bictia, 24 Febrero 2020. <br>
     </div>    
     <div class="der">
-        Integrantes: <br>
+        <strong>Integrantes: </strong><br>
         Andrés García <br>
         Bryan Piñeros <br>
         Julián Rivera<br>
         Paula Morales<br>
-        Redvers Escobar.
-
+        Redvers Escobar
     </div>
+</div>
 </section>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
