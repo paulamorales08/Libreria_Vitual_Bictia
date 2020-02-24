@@ -59,7 +59,7 @@ $categorias = $categoria->obtenerCategorias();
 
 
     </ul>
-    <form class="form-inline" method="GET" action="http://localhost/Libreria_Vitual_Bictia/libros/busquedaLibro.php?">
+    <form class="form-inline" method="GET" action="http://localhost:8080/Libreria_Vitual_Bictia/libros/busquedaLibro.php?">
       <input class="form-control mr-sm-1" type="search" placeholder="Buscar Libro" aria-label="Search" name="texto" id="texto">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>

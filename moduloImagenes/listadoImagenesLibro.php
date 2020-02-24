@@ -11,6 +11,11 @@ $todasLasImagenes = $imagen->obtenerImagenesActivas($idLibro);
     <div class="carousel-inner">
 
         <?php
+        
+        if(mysqli_num_rows($todasLasImagenes)<=0){
+            echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/imagenNoEncontrada.png' class='card-img-top' alt='Sin Imagnees'/>";
+        }
+        else{
         $conteo = 0;
             while ($imagenLibro = mysqli_fetch_object($todasLasImagenes)) {
                 if ($conteo == 0) {
@@ -22,6 +27,7 @@ $todasLasImagenes = $imagen->obtenerImagenesActivas($idLibro);
                 }
                 $conteo++;
             }
+        }
         ?>
 
     </div>

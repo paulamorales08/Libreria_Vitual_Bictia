@@ -45,7 +45,7 @@ include_once('./Conn/Database.php');
         $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
            
           if($primeraImagenLibro==null){
-            echo "No hay imagen";   
+            echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/imagenNoEncontrada.png' class='card-img-top' alt='Sin Imagnees'/>";
           }
           else{    
               echo "<a href='libros/detalleLibro.php?idLibro=$idLibro'><img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='card-img-top' alt='$primeraImagenLibro->nombreImagen'/></a>";

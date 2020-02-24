@@ -124,6 +124,20 @@
                 return false;
             }
         }
+        function crearEditorial($data){
+            $nombreEditorial = $data['editorial'];
+                    
+            $sql = "INSERT INTO editoriales (nombreEditorial) VALUES ('$nombreEditorial')";
+            
+            $res = mysqli_query($this->conn, $sql);
+
+            if ($res) {
+                return $nombreEditorial;
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 
     //Autores

@@ -52,19 +52,24 @@ include_once('../Conn/Database.php');
         $primeraImagenLibro = $imagen->obtenerPrimeraImagen($idLibro);
            
           if($primeraImagenLibro==null){
-            echo "No hay imagen";   
+            echo "<img src='$imagen->root/moduloImagenes/imagenesLibros/imagenNoEncontrada.png' class='card-img-top' alt='Sin Imagnees'/>";  
           }
           else{    
-              echo "<a href='libros/detalleLibro.php?idLibro=$idLibro'><img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='card-img-top' alt='$primeraImagenLibro->nombreImagen'/></a>";
+              echo "<a href='../libros/detalleLibro.php?idLibro=$idLibro'><img src='$imagen->root/moduloImagenes/imagenesLibros/$primeraImagenLibro->urlImagen' class='card-img-top' alt='$primeraImagenLibro->nombreImagen'/></a>";
           }
 
         echo "<div class='card-body'>";
-        echo "<h5 class='card-title'>$resultadoRecorrido->nombreLibro</h5>";
+        //echo "<h5 class='card-title'>$resultadoRecorrido->nombreLibro</h5>";
+        echo "<a href='../libros/detalleLibro.php?idLibro=$idLibro' style='text-decoration:none;color:black'><h5 class='card-title'>$resultadoRecorrido->nombreLibro</h5></a>";
         echo "<div class='descripcion_libro'><p class='card-text text-justify'>$resultadoRecorrido->descripcion</p></div>";
         echo "</div>";
         echo "<ul class='list-group list-group-flush'>";
-        echo "<li class='list-group-item'>$resultadoRecorrido->fechaPublicacion</li>";
-        echo "<li class='list-group-item'>Precio: $$resultadoRecorrido->precio</li>";
+        //echo "<li class='list-group-item'>$resultadoRecorrido->fechaPublicacion</li>";
+        $fechaPublicacion = $resultadoRecorrido->fechaPublicacion;
+        $date = new DateTime($resultadoRecorrido->fechaPublicacion);
+        echo "<div class='fechaPublicacion'>Año Publicación: ".$date->format('Y')."</div>"; 
+        echo "<div class='precioLibro'><li class='list-group-item'>$$resultadoRecorrido->precio</li></div>";
+        //echo "<li class='list-group-item'>Precio: $$resultadoRecorrido->precio</li>";
         //echo "<li class='list-group-item'>Estado: $libroRecorrido->estado</li>";
         //echo "<li class='list-group-item'>idAutor: $libroRecorrido->idAutor</li>";
         //echo "<li class='list-group-item'>idEditorial: $libroRecorrido->idEditorial</li>";

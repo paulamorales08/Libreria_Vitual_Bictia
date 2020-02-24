@@ -141,6 +141,8 @@
         <br>
         <button class="btn btn-primary">Modificar Libro</button>
         <a href='../moduloImagenes/index.php?idLibro=<?= $dp->idLibro?>' class="btn btn-outline-secondary">Ver Imágenes </a>
+        <a href='../libros' class="btn btn-outline-secondary">Ver Libros </a>
+
         <br><br>
     </form>
 
