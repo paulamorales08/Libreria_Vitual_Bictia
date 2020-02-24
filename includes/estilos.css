@@ -171,3 +171,20 @@
 .fechaPublicacion{
     font-size: .8em;
 }
+.fixed-top {
+    border-bottom: 1px solid orange;
+}
+
+@media only screen and (max-width: 1200px) {
+    .footer .footer_int{
+        flex-direction: column;
+    }
+    .footer .footer_int .izq {
+        text-align: center;
+    }
+    .footer .footer_int .der {
+        min-width: 100%;
+        text-align: center;
+        padding: 20px;
+    }
+}

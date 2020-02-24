@@ -10,7 +10,7 @@ include_once('./Conn/Database.php');
   <link rel="stylesheet" href="includes/estilos.css?ver19">
   <link rel="stylesheet" href="includes/fontawesome/css/all.css">
   <link rel="shortcut icon" href="includes/favicon/favicon.ico" />
-  <title>Principal Temporal</title>
+  <title>Librería Bictia</title>
 </head>
 
 
