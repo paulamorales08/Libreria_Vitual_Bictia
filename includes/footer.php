@@ -1,7 +1,8 @@
 <section class="footer">
-    <div class="izq">
+<div class="footer_int">
+<div class="izq">
         Taller Nro. 4. <br>
-        Full Stack - Bictia, Febrero 2020.
+        Full Stack - Bictia, 24 Febrero 2020.
     </div>    
     <div class="der">
         Integrantes: <br>
@@ -9,9 +10,9 @@
         Bryan Piñeros <br>
         Julián Rivera<br>
         Paula Morales<br>
-        Redvers Escobar.
-
+        Redvers Escobar
     </div>
+</div>
 </section>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

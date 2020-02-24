@@ -26,8 +26,15 @@
         </div>
 
         <div class="publicacion">Año de Publicación:
-            <?= $datosDelLibro->fechaPublicacion ?>
-                
+
+        <?php
+            $fechaPublicacion = $datosDelLibro->fechaPublicacion;
+            $date = new DateTime($datosDelLibro->fechaPublicacion);
+            echo $date->format('Y');
+            //echo $date->format('Y-m-d');
+        ?>
+            
+            
         </div>
         <div class="categoria">
             Categoría: 
