@@ -47,8 +47,8 @@ if(isset($_POST) && !empty($_POST)){
       </div>
 
       <div class="clearfix">
-        <a href="http://localhost/Libreria_Vitual_Bictia/moduloImagenes/index.php"> <button class="btn btn-success float-left" type="submit">Registrar</button></a>
-        <a href="http://localhost/Libreria_Vitual_Bictia/" class="btn btn-danger"> Volver</a>
+        <a href="http://localhost:8080/Libreria_Vitual_Bictia/moduloImagenes/index.php"> <button class="btn btn-success float-left" type="submit">Registrar</button></a>
+        <a href="http://localhost:8080/Libreria_Vitual_Bictia/" class="btn btn-danger"> Volver</a>
 
       </div>
     </form>

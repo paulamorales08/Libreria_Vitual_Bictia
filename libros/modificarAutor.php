@@ -29,7 +29,7 @@
         var_dump($modificar);
         if ($modificar) {
             echo "Modificación exitosa";
-            header('location:principalAutor.php');
+            //header('location:principalAutor.php');
         }else{
             echo "Error al modificar";
         }
@@ -53,6 +53,7 @@
         </div>
         <br>
         <button class="btn btn-primary">Modificar Autor</button>
+        <a href='principalAutor.php' class="btn btn-outline-secondary">Volver </a>
         <br><br>
     </form>
 
