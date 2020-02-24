@@ -29,9 +29,14 @@ include_once('../Conn/Database.php');
     $imagen = new Imagen();
     $categoria = new Categoria();
     $busqueda = new Libros();
-    $resultadoBusqueda = $busqueda->buscarLibro($_GET['texto']);
-    //$todosLibrosSinCategoria = $categoria->librosRecientesActivos();
-    echo " <h3 class='font-weight-light pb-2'><span class='badge badge-dark'>Resultados de la busqueda</span></h3>";
+    $resultadoBusqueda = $busqueda->buscarLibro($_GET['texto']);  
+    $rows = $resultadoBusqueda->num_rows;
+    if ($rows>0) {
+        echo " <h3 class='font-weight-light pb-2'><span class='badge badge-dark'>Resultados encontrados $rows </span></h3>";
+    }else{
+        echo " <h3 class='font-weight-light pb-2'><span class='badge badge-dark'>No se han encontrado resultados</span></h3>";
+    }
+   
 ?>
 
 <div class="d-flex flex-row bd-highlight mb-3 d-flex justify-content-center d-flex flex-wrap">
