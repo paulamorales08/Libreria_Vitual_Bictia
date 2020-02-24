@@ -2,7 +2,12 @@
 <div class="footer_int">
 <div class="izq">
         Taller Nro. 4. <br>
-        Full Stack - Bictia, 24 Febrero 2020.
+        Desarrollado por el Grupo Nro. 2. <br>
+        Full Stack - Turno AM. <br><br>
+        <a href="http://bictia.com/" target="bictia">
+            <img src='<?= ROOT ?>/includes/imagenes/logo_bictia.png' alt="Logo Bictia" width="100px"><br>
+        </a>
+        Bictia, 24 Febrero 2020. <br>
     </div>    
     <div class="der">
         <strong>Integrantes: </strong><br>
